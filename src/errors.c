@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/21 15:47:11 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:17:27 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ps_invalid_input(char *str, int nbr)
 			return (TRUE);
 		i++;
 	}
-	if ((unsigned)nbr > 2147483647 && str[0] != '-')
+	if ((unsigned long)nbr > INT_MAX && str[0] != '-')
 		return (TRUE);
-	if ((unsigned)nbr < 2147483648 && str[0] == '-')
+	if ((unsigned long)nbr < INT_MAX && str[0] == '-')
 		return (TRUE);
 	return (0);
 }

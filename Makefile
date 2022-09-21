@@ -6,12 +6,12 @@
 #    By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 14:35:58 by julmuntz          #+#    #+#              #
-#    Updated: 2022/09/21 13:03:41 by julmuntz         ###   ########.fr        #
+#    Updated: 2022/09/21 13:51:12 by julmuntz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	push_swap.c		\
-				ok.c			\
+				errors.c		\
 				ops.c			\
 
 OBJDIR		= 	obj/

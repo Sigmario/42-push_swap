@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:49:26 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/21 13:04:21 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:51:56 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_stack
 	int	size;
 }	t_stack;
 
-int		ps_print(char *p_arg);
+int		ps_invalid_input(char *n);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);

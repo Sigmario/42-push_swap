@@ -6,22 +6,24 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:49:26 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/21 13:51:56 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:29:56 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_stack
 {
-	int	*stack;
+	int start_pos;
+	int final_pos;
+	int *stack;
 	int	size;
 }	t_stack;
 
-int		ps_invalid_input(char *n);
+int		ps_invalid_input(char *str, int nbr);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);

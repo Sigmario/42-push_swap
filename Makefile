@@ -6,17 +6,17 @@
 #    By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 14:35:58 by julmuntz          #+#    #+#              #
-#    Updated: 2022/09/21 13:51:12 by julmuntz         ###   ########.fr        #
+#    Updated: 2022/09/21 16:42:27 by julmuntz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	push_swap.c		\
-				errors.c		\
-				ops.c			\
+SRC			=	src/push_swap.c		\
+				src/errors.c		\
+				src/ops.c			\
 
 OBJDIR		= 	obj/
 
-OBJS		= 	$(addprefix $(OBJDIR), $(SRCS:.c=.o))
+OBJ			= 	$(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 NAME		= 	push_swap
 
@@ -28,12 +28,13 @@ CFLAGS		= 	-Wall -Wextra -Werror
 
 $(OBJDIR)%.o:	%.c
 					@mkdir -p $(OBJDIR)
+					@mkdir -p $(OBJDIR)/src/
 					$(CC) -c -I $(LIBFT) $< -o $@
 					$(CC) $(CFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJ)
 					cd $(LIBFT) && $(MAKE)
-					$(CC) $(OBJS) libft/libft.a -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME)
+					$(CC) $(OBJ) libft/libft.a -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME)
 
 all:			$(NAME)
 
@@ -48,7 +49,8 @@ fclean:			clean
 re:				fclean all
 
 norminette :
-				@norminette libft
+				@norminette libft/*.c
+				@norminette libft/*.h
 				@norminette *.c
 				@norminette *.h	
 

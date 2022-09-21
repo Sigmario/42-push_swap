@@ -6,34 +6,39 @@
 #    By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 14:35:58 by julmuntz          #+#    #+#              #
-#    Updated: 2022/07/30 15:09:37 by julmuntz         ###   ########.fr        #
+#    Updated: 2022/09/21 13:03:41 by julmuntz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	push_swap.c				\
+SRCS		=	push_swap.c		\
+				ok.c			\
+				ops.c			\
 
-OBJS		= 	$(SRCS:.c=.o)
+OBJDIR		= 	obj/
 
-NAME		= 	libftpushswap.a
+OBJS		= 	$(addprefix $(OBJDIR), $(SRCS:.c=.o))
+
+NAME		= 	push_swap
 
 LIBFT		=	./libft
 
 CC			= 	cc
 RM			= 	rm -f
-CFLAGS		= 	-Wall -Wextra -Werror
+CFLAGS		= 	-Wall -Wextra -Werror 
 
-.c.o :
-	$(CC) -c -I $(LIBFT) $< -o $@
+$(OBJDIR)%.o:	%.c
+					@mkdir -p $(OBJDIR)
+					$(CC) -c -I $(LIBFT) $< -o $@
+					$(CC) $(CFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
 
 $(NAME):		$(OBJS)
 					cd $(LIBFT) && $(MAKE)
-					cp libft/libft.a $(NAME)
-					ar rcs $(NAME) $(OBJS)
+					$(CC) $(OBJS) libft/libft.a -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME)
 
 all:			$(NAME)
 
 clean:
-					$(RM) -r $(OBJS)
+					$(RM) -r $(OBJDIR)
 					cd $(LIBFT) && $(MAKE) clean
 
 fclean:			clean
@@ -42,4 +47,9 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re
+norminette :
+				@norminette libft
+				@norminette *.c
+				@norminette *.h	
+
+.PHONY:			all clean fclean re norminette

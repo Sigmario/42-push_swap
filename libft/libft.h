@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 12:29:49 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/18 20:51:35 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:31:02 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct t_node
+{
+	struct t_node	*head;
+	int				value;
+	struct t_node	*next;
+}				t_node;
+
+void			ft_array_to_list(int *array, int size);
 int				ft_atoi(char *str);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);

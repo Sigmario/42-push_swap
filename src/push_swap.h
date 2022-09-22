@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:49:26 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/21 16:29:56 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:27:48 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 
 typedef struct s_stack
 {
-	int start_pos;
-	int final_pos;
-	int *stack;
+	int	*array;
+	int	start_pos;
+	int	final_pos;
+	int	*stack_a;
+	int	*stack_b;
 	int	size;
-}	t_stack;
+}		t_stack;
 
-int		ps_invalid_input(char *str, int nbr);
+int		get_values(int arc, char **arv);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);

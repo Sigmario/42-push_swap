@@ -6,7 +6,7 @@
 #    By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 14:35:58 by julmuntz          #+#    #+#              #
-#    Updated: 2022/09/21 16:42:27 by julmuntz         ###   ########.fr        #
+#    Updated: 2022/09/22 15:24:26 by julmuntz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ re:				fclean all
 norminette :
 				@norminette libft/*.c
 				@norminette libft/*.h
-				@norminette *.c
-				@norminette *.h	
+				@norminette src/*.c
+				@norminette src/*.h	
 
 .PHONY:			all clean fclean re norminette

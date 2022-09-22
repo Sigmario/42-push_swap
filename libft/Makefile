@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 SRCS		=	ft_atoi.c							\
+    			ft_array_to_list.c					\
     			ft_bzero.c							\
     			ft_calloc.c							\
     			ft_convert_base.c					\
@@ -76,7 +77,9 @@ SRCS		=	ft_atoi.c							\
     			ft_swap.c							\
     			ft_tolower.c						\
     			ft_toupper.c						\
+													\
 				get_next_line.c						\
+													\
 				./ft_printf/ft_printf.c				\
 				./ft_printf/convert_char.c			\
 				./ft_printf/convert_decimal.c		\

@@ -23,3 +23,15 @@ t_list	*ft_lstnew(void *content)
 	var->next = NULL;
 	return (var);
 }
+
+t_node	*ft_lstnew_int(int value)
+{
+	t_node	*var;
+
+	var = malloc(sizeof(t_node));
+	if (var == NULL)
+		return (NULL);
+	var->value = value;
+	var->next = NULL;
+	return (var);
+}

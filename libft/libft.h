@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 12:29:49 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/22 19:31:02 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:01:25 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,11 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct t_node
+typedef struct s_node
 {
-	struct t_node	*head;
 	int				value;
-	struct t_node	*next;
-}				t_node;
+	struct s_node	*next;
+}					t_node;
 
 void			ft_array_to_list(int *array, int size);
 int				ft_atoi(char *str);
@@ -54,13 +53,16 @@ int				ft_isprint(int c);
 char			*ft_itoa(int n);
 size_t			ft_linelen(char *line);
 void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstadd_back_int(t_node **lst, t_node *new);
 void			ft_lstadd_front(t_list **lst, t_list *new);
+void			ft_lstadd_front_int(t_node **lst, t_node *new);
 void			ft_lstclear(t_list **lst, void (*d)(void *));
 void			ft_lstdelone(t_list *lst, void (*d)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*d)(void *));
 t_list			*ft_lstnew(void *content);
+t_node			*ft_lstnew_int(int value);
 int				ft_lstsize(t_list *lst);
 void			*ft_memchr(void *s, int c, size_t n);
 int				ft_memcmp(void *s1, void *s2, size_t n);

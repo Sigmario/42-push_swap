@@ -18,3 +18,10 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	new->next = *lst;
 	*lst = new;
 }
+
+void	ft_lstadd_front_int(t_node **lst, t_node *new)
+{
+	if (new != *lst)
+	new->next = *lst;
+	*lst = new;
+}

@@ -6,13 +6,13 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/22 18:34:59 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/23 21:30:42 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	invalid_input(char *str, int nbr)
+static int	invalid_data(char *str, int nbr)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ int	get_values(int arc, char **arv)
 		while (i < arc - 1)
 		{
 			tab[i] = ft_atoi(arv[i + 1]);
-			if (invalid_input(arv[i + 1], tab[i]) == TRUE)
+			if (invalid_data(arv[i + 1], tab[i]) == TRUE)
 				return (ft_printf("Error\n"), 0);
 			i++;
 		}

@@ -10,13 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC			=	ft_array_to_list.c			\
-				ft_atoi.c					\
+SRC			=	ft_atoi.c					\
     			ft_bzero.c					\
     			ft_calloc.c					\
     			ft_convert_base.c			\
-    			ft_hexlen_u.c				\
-    			ft_hexlen_ul.c				\
+    			ft_hexlen.c					\
     			ft_isalnum.c				\
     			ft_isalpha.c				\
     			ft_isascii.c				\
@@ -41,47 +39,32 @@ SRC			=	ft_array_to_list.c			\
     			ft_memset.c 				\
     			ft_nbrcmp.c 				\
     			ft_nbrcpy.c 				\
-    			ft_nbrlen_u.c 				\
     			ft_nbrlen.c 				\
-    			ft_putchar_fd.c				\
+				ft_printf.c					\
     			ft_putchar.c				\
     			ft_putendl_fd.c				\
-    			ft_puthex_u_lower.c			\
-    			ft_puthex_u_upper.c			\
-    			ft_puthex_ul.c				\
-    			ft_putint.c					\
-    			ft_putnbr_fd.c				\
-    			ft_putnbr_u.c				\
-    			ft_putnbr_ul.c				\
+    			ft_puthex.c					\
     			ft_putnbr.c					\
-    			ft_putstr_fd.c				\
     			ft_putstr.c					\
     			ft_split.c					\
     			ft_scanf.c					\
+    			ft_strcat.c					\
     			ft_strchr.c					\
     			ft_strcmp.c					\
     			ft_strcpy.c					\
     			ft_strdup.c					\
     			ft_striteri.c				\
     			ft_strjoin.c				\
-    			ft_strlcat.c				\
-    			ft_strlcpy.c				\
     			ft_strlen.c					\
     			ft_strmapi.c				\
-    			ft_strncmp.c				\
-    			ft_strnlen.c				\
     			ft_strnstr.c				\
-    			ft_strrchr.c				\
     			ft_strtrim.c				\
     			ft_substr.c					\
     			ft_swap.c					\
     			ft_tolower.c				\
     			ft_toupper.c				\
-											\
 				get_next_line.c				\
-											\
 				$(addprefix ft_printf/,		\
-				ft_printf.c					\
 				convert_char.c				\
 				convert_decimal.c			\
 				convert_hex_lower.c			\

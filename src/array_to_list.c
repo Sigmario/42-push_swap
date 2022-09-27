@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexlen_u.c                                      :+:      :+:    :+:   */
+/*   array_to_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 19:12:44 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/07/11 19:35:10 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/09/27 11:24:00 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/09/27 13:36:27 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_hexlen_u(unsigned int n)
+void	array_to_list(int *array, int size, t_stack *ptr)
 {
-	unsigned int	len;
+	int	i;
 
-	len = 1;
-	while (n >= 16)
+	i = 0;
+	while (i < size - 1)
 	{
-		n /= 16;
-		len++;
+		ps_lstadd_back(&ptr, ps_lstnew(array[i]));
+		i++;
 	}
-	return (len);
+}
+void	print_list(t_stack *ptr)
+{
+	if (!ptr)
+		return ;
+	while (ptr)
+	{
+		ft_printf("%d\n", ptr->value);
+		ptr = ptr->next;
+	}
 }

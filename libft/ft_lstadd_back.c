@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../src/push_swap.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -27,9 +28,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
-void	ft_lstadd_back_int(t_node **lst, t_node *new)
+void	ps_lstadd_back(t_stack **lst, t_stack *new)
 {
-	t_node	*end;
+	t_stack	*end;
 
 	if (*lst == NULL)
 		*lst = new;

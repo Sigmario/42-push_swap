@@ -22,3 +22,17 @@ char	*ft_strchr(char *s, int c)
 	}
 	return ((char *)s);
 }
+
+char	*ft_strrchr(char *s, int c)
+{
+	char	*end;
+
+	end = (char *)s;
+	while (*s)
+		s++;
+	while (s != end && *s != (char)c)
+		s--;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
+}

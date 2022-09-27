@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:58:21 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/07/10 17:21:06 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:00:19 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,9 @@ int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }

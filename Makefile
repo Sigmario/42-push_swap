@@ -6,7 +6,7 @@
 #    By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 14:35:58 by julmuntz          #+#    #+#              #
-#    Updated: 2022/09/25 16:42:39 by julmuntz         ###   ########.fr        #
+#    Updated: 2022/09/27 11:26:34 by julmuntz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCDIR		= 	src/
 SRC			=	push_swap.c		\
 				errors.c		\
 				ops.c			\
+				array_to_list.c	\
 
 OBJDIR		= 	obj/
 OBJ			= 	$(addprefix $(OBJDIR), $(SRC:.c=.o))

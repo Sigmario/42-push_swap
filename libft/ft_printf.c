@@ -6,11 +6,12 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/07/25 15:33:45 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:10:49 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
+#include "ft_printf/ft_printf.h"
 
 int	convert_type(va_list ap, int type)
 {

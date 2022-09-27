@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:29:06 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/25 19:28:46 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/27 13:36:34 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int arc, char **arv)
 {
-	t_node *ptr;
+	t_stack *ptr;
 
-	ptr = NULL;
-	get_values(arv, arc, &ptr);
-	ft_printf("%d\n", ptr->value);
+	ptr = malloc(sizeof *ptr);
+	get_values(arv, arc, ptr);
+	print_list(ptr);
 	return (0);
 }

@@ -23,3 +23,13 @@ size_t	ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
+size_t	ft_strnlen(char *str, size_t maxlen)
+{
+	char	*ptr;
+
+	ptr = str;
+	while (maxlen-- > 0 && *ptr)
+		ptr++;
+	return (ptr - str);
+}

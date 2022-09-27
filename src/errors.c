@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/25 19:24:59 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/27 13:29:46 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	invalid_data(char *str, int nbr)
 	return (0);
 }
 
-int	get_values(char **str, int size, t_node **ptr)
+int	get_values(char **arg, int size, t_stack *ptr)
 {
 	int	i;
 	int	*arr;
@@ -52,13 +52,12 @@ int	get_values(char **str, int size, t_node **ptr)
 		i = 0;
 		while (i < size - 1)
 		{
-			arr[i] = ft_atoi(str[i + 1]);
-			if (invalid_data(str[i + 1], arr[i]) == TRUE)
+			arr[i] = ft_atoi(arg[i + 1]);
+			if (invalid_data(arg[i + 1], arr[i]) == TRUE)
 				return (ft_printf("Error\n"), 0);
 			i++;
 		}
-		ft_array_to_list(arr, size, *ptr);
-		free(arr);
 	}
+	array_to_list(arr, size, ptr);
 	return (0);
 }

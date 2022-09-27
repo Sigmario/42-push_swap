@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:49:26 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/27 13:06:20 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:26:04 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-int			get_values(char **str, int size, t_stack *ptr);
-void		array_to_list(int *array, int size, t_stack *ptr);
+int			get_values(char **str, int size, t_stack **ptr);
+void		array_to_list(int *array, int size, t_stack **ptr);
 void		ps_lstadd_back(t_stack **lst, t_stack *new);
 void		ps_lstadd_front(t_stack **lst, t_stack *new);
 t_stack		*ps_lstnew(int value);
-void		print_list(t_stack *head);
+void		print_list(t_stack *ptr);
 void		sa(t_stack *stack_a);
 void		sb(t_stack *stack_b);
 void		ss(t_stack *stack_a, t_stack *stack_b);

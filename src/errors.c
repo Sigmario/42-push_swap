@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/27 13:29:46 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:28:05 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	invalid_data(char *str, int nbr)
 	return (0);
 }
 
-int	get_values(char **arg, int size, t_stack *ptr)
+int	get_values(char **arg, int size, t_stack **ptr)
 {
 	int	i;
 	int	*arr;
@@ -49,10 +49,10 @@ int	get_values(char **arg, int size, t_stack *ptr)
 	arr = (int *)malloc((size - 1) * sizeof(int));
 	if (size > 1)
 	{
-		i = 0;
 		while (i < size - 1)
 		{
 			arr[i] = ft_atoi(arg[i + 1]);
+			ft_printf("Getval: %d\n", arr[i]);
 			if (invalid_data(arg[i + 1], arr[i]) == TRUE)
 				return (ft_printf("Error\n"), 0);
 			i++;

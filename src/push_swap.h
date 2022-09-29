@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:49:26 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 15:06:04 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:43:23 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 typedef struct s_data
 {
 	int				*array;
-	int				final_pos;
 }	t_data;
 
 typedef struct s_stack
 {
 	int				value;
-	int				*stack_a;
-	int				*stack_b;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*next;
 }	t_stack;
 

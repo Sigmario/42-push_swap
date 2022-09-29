@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 16:07:53 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:47:27 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,9 @@ static int	invalid_number(char *str, int nbr)
 	int	i;
 
 	i = 0;
-	if (ft_strlen(str) > 10 && str[0] != '-')
-		return (TRUE);
-	if (ft_strlen(str) > 11 && str[0] == '-')
-		return (TRUE);
-	if (str[0] == 0)
-		return (TRUE);
-	if (str[0] == '+' && str[1] == 0)
+	if ((ft_strlen(str) > 10 && str[0] != '-') || (ft_strlen(str) > 11
+			&& str[0] == '-') || (str[0] == 0)
+		|| (str[0] == '+' && str[1] == 0))
 		return (TRUE);
 	if (str[0] == '-' || str[0] == '+')
 		i++;
@@ -56,6 +52,8 @@ int	get_values(t_data *data, char **arg, int size)
 				return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
 			i++;
 		}
+		if (ft_nbrcmp(array, size) == TRUE)
+			return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
 		data->array = array;
 	}
 	return (0);

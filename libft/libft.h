@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 12:29:49 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 14:49:28 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:46:43 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int				ft_memcmp(void *s1, void *s2, size_t n);
 void			*ft_memcpy(void *dst, void *src, size_t n);
 void			*ft_memmove(void *dst, void *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
-int				ft_nbrcmp(int *n1, int *n2);
+int				ft_nbrcmp(int *array, int size);
 int				*ft_nbrcpy(int *n1, int *n2);
 int				ft_nbrlen(int n);
 unsigned int	ft_nbrlen_u(unsigned int n);

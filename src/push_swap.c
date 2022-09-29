@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:29:06 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 15:05:36 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:12:30 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ int	main(int arc, char **arv)
 		get_values(&data, arv, arc);
 		array_to_list(data.array, arc, &ptr);
 		puts("");
-		printf("\tUNSORTED:");
-		puts("");
+		printf("UNSORTED:\n");
 		print_list(ptr);
-		puts("\n");
+		puts("");
 		ptr = NULL;
+		printf("SORTED:\n");
 		array_to_list(ft_sort_int_tab(data.array, arc), arc, &ptr);
-		printf("\tSORTED:");
-		puts("");
 		print_list(ptr);
-		puts("\n");
+		puts("");
 	}
 	return (0);
 }

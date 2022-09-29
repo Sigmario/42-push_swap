@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 14:26:58 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:07:53 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	get_values(t_data *data, char **arg, int size)
 		{
 			array[i] = ft_atoi(arg[i + 1]);
 			if (invalid_number(arg[i + 1], array[i]) == TRUE)
-				return (ft_printf("Error\n"), 0);
+				return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
 			i++;
 		}
 		data->array = array;

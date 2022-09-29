@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:24:00 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 15:06:22 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:04:35 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ void	print_list(t_stack *ptr)
 		ft_printf("[%d] ", ptr->value);
 		ptr = ptr->next;
 	}
+	ft_printf("\n");
 }

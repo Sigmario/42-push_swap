@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 12:29:49 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/27 14:59:22 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:49:28 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void			ft_putnbr_u(unsigned int n);
 void			ft_putstr(char *str);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_scanf(char *fmt, ...);
+int				*ft_sort_int_tab(int *tab, int size);
 char			**ft_split(char *s, char c);
 char			*ft_strcat(char *dest, char *src);
 char			*ft_strchr(char *s, int c);

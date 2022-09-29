@@ -48,6 +48,7 @@ SRC			=	ft_atoi.c					\
     			ft_putstr.c					\
     			ft_split.c					\
     			ft_scanf.c					\
+    			ft_sort_int_tab.c			\
     			ft_strcat.c					\
     			ft_strchr.c					\
     			ft_strcmp.c					\

@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:49:26 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/27 15:26:04 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:06:04 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 
 # include "../libft/libft.h"
 
+typedef struct s_data
+{
+	int				*array;
+	int				final_pos;
+}	t_data;
+
 typedef struct s_stack
 {
 	int				value;
-	int				start_pos;
-	int				final_pos;
 	int				*stack_a;
 	int				*stack_b;
 	struct s_stack	*next;
 }	t_stack;
 
-int			get_values(char **str, int size, t_stack **ptr);
+int			get_values(t_data *data, char **str, int size);
 void		array_to_list(int *array, int size, t_stack **ptr);
 void		ps_lstadd_back(t_stack **lst, t_stack *new);
 void		ps_lstadd_front(t_stack **lst, t_stack *new);

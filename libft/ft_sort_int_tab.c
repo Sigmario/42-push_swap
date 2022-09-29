@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_functions.c                                   :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 11:24:00 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 15:06:22 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/09/29 14:31:18 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/09/29 14:49:13 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	array_to_list(int *array, int size, t_stack **ptr)
+int	*ft_sort_int_tab(int *tab, int size)
 {
-	int	i;
+	int	temporary;
+	int	index[2];
 
-	i = 0;
-	while (i < size - 1)
+	index[0] = 0;
+	while (index[0] < size)
 	{
-		ps_lstadd_back(ptr, ps_lstnew(array[i]));
-		i++;
+		index[1] = index[0] + 1;
+		while (index[1] < size - 1)
+		{
+			if (tab[index[0]] > tab[index[1]])
+			{
+				temporary = tab[index[0]];
+				tab[index[0]] = tab[index[1]];
+				tab[index[1]] = temporary;
+			}
+			index[1]++;
+		}
+		index[0]++;
 	}
-}
-
-void	print_list(t_stack *ptr)
-{
-	if (!ptr)
-		return ;
-	while (ptr)
-	{
-		ft_printf("[%d] ", ptr->value);
-		ptr = ptr->next;
-	}
+	return (tab);
 }

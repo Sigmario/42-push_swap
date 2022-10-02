@@ -32,11 +32,11 @@ typedef struct s_stack
 }	t_stack;
 
 int			get_values(t_data *data, char **str, int size);
-void		array_to_list(int *array, int size, t_stack **ptr);
-void		ps_lstadd_back(t_stack **lst, t_stack *new);
-void		ps_lstadd_front(t_stack **lst, t_stack *new);
-t_stack		*ps_lstnew(int value);
-void		print_list(t_stack *ptr);
+int			number_of_elements(t_stack *top);
+void		array_to_list(t_data *data, t_stack **ptr, int size);
+void		add_top(t_stack *ptr, t_stack *top, int value);
+void		del_top(t_stack *top);
+void		display_stack(t_stack *top);
 void		sa(t_stack *stack_a);
 void		sb(t_stack *stack_b);
 void		ss(t_stack *stack_a, t_stack *stack_b);
@@ -48,5 +48,8 @@ void		rr(t_stack *stack_a, t_stack *stack_b);
 void		rra(t_stack *stack_a);
 void		rrb(t_stack *stack_b);
 void		rrr(t_stack *stack_a, t_stack *stack_b);
+
+void		ps_lstadd_back(t_stack **lst, t_stack *new);
+t_stack		*ps_lstnew(int value);
 
 #endif

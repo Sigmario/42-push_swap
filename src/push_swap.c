@@ -21,16 +21,11 @@ int	main(int arc, char **arv)
 	if (arc > 1)
 	{
 		get_values(&data, arv, arc);
-		array_to_list(data.array, arc, &ptr);
+		array_to_list(&data, &ptr, arc);
 		puts("");
-		printf("UNSORTED:\n");
-		print_list(ptr);
+		display_stack(ptr);
 		puts("");
-		ptr = NULL;
-		printf("SORTED:\n");
-		array_to_list(ft_sort_int_tab(data.array, arc), arc, &ptr);
-		print_list(ptr);
-		puts("");
+		ft_printf("%d\n", number_of_elements(ptr));
 	}
 	return (0);
 }

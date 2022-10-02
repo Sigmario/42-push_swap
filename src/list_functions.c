@@ -12,26 +12,56 @@
 
 #include "push_swap.h"
 
-void	array_to_list(int *array, int size, t_stack **ptr)
+void	del_top(t_stack *top)
+{
+	t_stack	*temp;
+
+	if (top)
+	{
+		temp = top;
+		top = top->next;
+		free(temp);
+	}
+}
+
+void	display_stack(t_stack *top)
+{
+	t_stack	*current;
+
+	if (!top)
+		return ;
+	current = top;
+	while (current->next)
+	{
+		ft_printf("%d -> ", current->value);
+		current = current->next;
+	}
+	ft_printf("%d\n", current->value);
+}
+
+void	array_to_list(t_data *data, t_stack **ptr, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size - 1)
 	{
-		ps_lstadd_back(ptr, ps_lstnew(array[i]));
+		ps_lstadd_back(ptr, ps_lstnew(data->array[i]));
 		i++;
 	}
 }
 
-void	print_list(t_stack *ptr)
+int	number_of_elements(t_stack *top)
 {
-	if (!ptr)
-		return ;
-	while (ptr)
+	t_stack	*current;
+	int		count;
+
+	count = 0;
+	current = top;
+	while (current)
 	{
-		ft_printf("[%d] ", ptr->value);
-		ptr = ptr->next;
+		current = current->next;
+		count++;
 	}
-	ft_printf("\n");
+	return (count);
 }

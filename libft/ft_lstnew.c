@@ -11,28 +11,27 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../src/push_swap.h"
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*var;
+	t_list	*lst;
 
-	var = malloc(sizeof(t_list));
-	if (var == NULL)
+	lst = malloc(sizeof(t_list));
+	if (lst == NULL)
 		return (NULL);
-	var->content = content;
-	var->next = NULL;
-	return (var);
+	lst->content = content;
+	lst->next = NULL;
+	return (lst);
 }
 
-t_stack	*ps_lstnew(int value)
+t_stack	*stacknew(int value)
 {
-	t_stack	*var;
+	t_stack	*node;
 
-	var = malloc(sizeof(t_stack));
-	if (var == NULL)
+	node = malloc(sizeof(t_stack));
+	if (node == NULL)
 		return (NULL);
-	var->value = value;
-	var->next = NULL;
-	return (var);
+	node->value = value;
+	node->next = NULL;
+	return (node);
 }

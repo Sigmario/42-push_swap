@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../src/push_swap.h"
 
 int	ft_lstsize(t_list *lst)
 {
@@ -26,11 +25,13 @@ int	ft_lstsize(t_list *lst)
 	return (count);
 }
 
-int	ps_lstsize(t_stack *node)
+int	stacksize(t_stack *node)
 {
 	int		count;
 
 	count = 0;
+	if (!node)
+		return (0);
 	while (node)
 	{
 		node = node->next;

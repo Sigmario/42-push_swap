@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf/ft_printf.h"
 
 int	convert_type(va_list ap, int type)
 {

@@ -27,6 +27,7 @@ SRC			=	ft_atoi.c					\
 				ft_lstadd_front.c			\
 				ft_lstclear.c				\
 				ft_lstdelone.c				\
+				ft_lstdisplay.c				\
 				ft_lstiter.c				\
 				ft_lstlast.c				\
 				ft_lstmap.c					\
@@ -42,7 +43,7 @@ SRC			=	ft_atoi.c					\
     			ft_nbrlen.c 				\
 				ft_printf.c					\
     			ft_putchar.c				\
-    			ft_putendl_fd.c				\
+    			ft_putendl.c				\
     			ft_puthex.c					\
     			ft_putnbr.c					\
     			ft_putstr.c					\

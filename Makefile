@@ -12,9 +12,8 @@
 
 SRCDIR		= 	src/
 SRC			=	push_swap.c		\
-				errors.c		\
-				ops.c			\
-				list_functions.c\
+				get_values.c	\
+				get_index.c		\
 
 OBJDIR		= 	obj/
 OBJ			= 	$(addprefix $(OBJDIR), $(SRC:.c=.o))

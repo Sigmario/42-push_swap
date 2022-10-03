@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../src/push_swap.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -28,15 +27,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
-void	ps_lstadd_back(t_stack **lst, t_stack *new)
+void	stackadd_back(t_stack **ptr, t_stack *new)
 {
 	t_stack	*end;
 
-	if (*lst == NULL)
-		*lst = new;
+	if (*ptr == NULL)
+		*ptr = new;
 	else
 	{
-		end = *lst;
+		end = *ptr;
 		while (end->next != NULL)
 			end = end->next;
 		end->next = new;

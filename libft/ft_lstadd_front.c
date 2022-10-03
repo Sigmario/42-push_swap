@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../src/push_swap.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
@@ -20,9 +19,9 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-void	ps_lstadd_front(t_stack **lst, t_stack *new)
+void	stackadd_front(t_stack **ptr, t_stack *new)
 {
-	if (new != *lst)
-	new->next = *lst;
-	*lst = new;
+	if (new != *ptr)
+	new->next = *ptr;
+	*ptr = new;
 }

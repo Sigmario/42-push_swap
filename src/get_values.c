@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   input_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/09/29 17:47:27 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:42:56 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	array_to_list(int *array, int size, t_stack **ptr)
+{
+	int	i;
+
+	i = 0;
+	if (ft_nbrcmp(array, size) == TRUE)
+		return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
+	while (i < size - 1)
+	{
+		stackadd_back(ptr, stacknew(array[i]));
+		i++;
+	}
+	return (0);
+}
 
 static int	invalid_number(char *str, int nbr)
 {
@@ -18,8 +33,8 @@ static int	invalid_number(char *str, int nbr)
 
 	i = 0;
 	if ((ft_strlen(str) > 10 && str[0] != '-') || (ft_strlen(str) > 11
-			&& str[0] == '-') || (str[0] == 0)
-		|| (str[0] == '+' && str[1] == 0))
+			&& str[0] == '-') || (str[0] == 0) || (str[0] == '+'
+			&& str[1] == 0))
 		return (TRUE);
 	if (str[0] == '-' || str[0] == '+')
 		i++;
@@ -36,25 +51,29 @@ static int	invalid_number(char *str, int nbr)
 	return (0);
 }
 
-int	get_values(t_data *data, char **arg, int size)
+t_stack	*get_values(int size, char **arv)
 {
 	int		i;
+	t_stack	*node;
 	int		*array;
 
 	i = 0;
+	node = NULL;
 	array = (int *)malloc((size - 1) * sizeof(int));
 	if (size > 1)
 	{
 		while (i < size - 1)
 		{
-			array[i] = ft_atoi(arg[i + 1]);
-			if (invalid_number(arg[i + 1], array[i]) == TRUE)
-				return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
+			array[i] = ft_atoi(arv[i + 1]);
+			if (invalid_number(arv[i + 1], array[i]) == TRUE)
+			{
+				ft_printf("Error\n");
+				exit(EXIT_SUCCESS);
+				return (NULL);
+			}
 			i++;
 		}
-		if (ft_nbrcmp(array, size) == TRUE)
-			return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
-		data->array = array;
+		array_to_list(array, size, &node);
 	}
-	return (0);
+	return (node);
 }

@@ -20,3 +20,12 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		lst = lst->next;
 	}
 }
+
+void	stackiter(t_stack *node, void (*f)(int))
+{
+	while (node)
+	{
+		(*f)(node->value);
+		node = node->next;
+	}
+}

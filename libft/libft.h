@@ -24,6 +24,8 @@
 # include <stdint.h>
 # include <stdarg.h>
 # include <fcntl.h>
+# include "ft_printf/ft_printf.h"
+# include "../src/push_swap.h"
 
 typedef struct s_list
 {
@@ -51,6 +53,7 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstclear(t_list **lst, void (*d)(void *));
 void			ft_lstdelone(t_list *lst, void (*d)(void *));
+void			ft_lstdisplay(t_list *lst);
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*d)(void *));
@@ -68,6 +71,7 @@ unsigned int	ft_nbrlen_u(unsigned int n);
 int				ft_printf(const char *str, ...);
 int				ft_putchar(char c);
 void			ft_putchar_fd(char c, int fd);
+void			ft_putendl(char *s);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_puthex_u_lower(unsigned int n);
 void			ft_puthex_u_upper(unsigned int n);

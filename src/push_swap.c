@@ -14,18 +14,19 @@
 
 int	main(int arc, char **arv)
 {
-	t_data	data;
-	t_stack	*ptr;
+	t_stack	*a_stack;
+	int		size;
 
-	ptr = NULL;
 	if (arc > 1)
 	{
-		get_values(&data, arv, arc);
-		array_to_list(&data, &ptr, arc);
+		a_stack = get_values(arc, arv);
+		size = stacksize(a_stack);
+		get_index(a_stack, size);
 		puts("");
-		display_stack(ptr);
+		stackdisplay(a_stack);
 		puts("");
-		ft_printf("%d\n", number_of_elements(ptr));
+		ft_printf("Min value position:\t%d\n", min_value_pos(&a_stack));
+		ft_printf("Number of values:\t%d\n", size);
 	}
 	return (0);
 }

@@ -81,6 +81,8 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putnbr_u(unsigned int n);
 void			ft_putstr(char *str);
 void			ft_putstr_fd(char *s, int fd);
+void			ft_puttab(char *s);
+void			ft_puttabs(char *s, int nbr);
 int				ft_scanf(char *fmt, ...);
 int				*ft_sort_int_tab(int *tab, int size);
 char			**ft_split(char *s, char c);

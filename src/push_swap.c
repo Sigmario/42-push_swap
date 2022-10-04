@@ -23,8 +23,10 @@ int	main(int arc, char **arv)
 		size = stacksize(a_stack);
 		get_index(a_stack, size);
 		puts("");
-		stackdisplay(a_stack);
-		puts("");
+		ft_printf("Stack A\t\tStack B\n");
+		puts("-------------------------");
+		stackdisplay(a_stack, a_stack);
+		puts("-------------------------");
 		ft_printf("Min value position:\t%d\n", min_value_pos(&a_stack));
 		ft_printf("Number of values:\t%d\n", size);
 	}

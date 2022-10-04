@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdisplay.c                                    :+:      :+:    :+:   */
+/*   ft_puttab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 21:57:37 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/04 12:54:56 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/10/04 12:47:28 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/10/04 12:52:44 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdisplay(t_list *lst)
+void	ft_puttab(char *s)
 {
-	while (lst)
-	{
-		ft_putendl(lst->content);
-		lst = lst->next;
-	}
-	if (!lst)
+	int	i;
+
+	i = 0;
+	if (s == NULL)
 		return ;
+	while (s[i])
+		write(1, &s[i++], 1);
+	write(1, "\t", 1);
 }
 
-void	stackdisplay(t_stack *a, t_stack *b)
+void	ft_puttabs(char *s, int nbr)
 {
-	while ((a) || (a && b))
-	{
-		ft_puttabs(ft_itoa(a->value), 2);
-		ft_putendl(ft_itoa(b->value));
-		a = a->next;
-		b = b->next;
-	}
-	if ((a == NULL) || (a && b == NULL))
+	int	i;
+
+	i = 0;
+	if (s == NULL)
 		return ;
+	while (s[i])
+		write(1, &s[i++], 1);
+	while (nbr--)
+		write(1, "\t", 1);
 }

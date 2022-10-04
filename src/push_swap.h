@@ -52,11 +52,11 @@ void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
 void		stackclear(t_stack **ptr, void (*d)(int));
 void		stackdelone(t_stack *node, void (*d)(int));
+void		stackdisplay(t_stack *a, t_stack *b);
 void		stackiter(t_stack *node, void (*f)(int));
 t_stack		*stacklast(t_stack *node);
 t_stack		*stackmap(t_stack *node, int (*f)(int), void (*d)(int));
 t_stack		*stacknew(int value);
-void		stackdisplay(t_stack *node);
 int			stacksize(t_stack *node);
 
 #endif

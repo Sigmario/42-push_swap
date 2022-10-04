@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_functions.c                                  :+:      :+:    :+:   */
+/*   get_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/03 20:39:41 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/04 12:22:34 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,29 @@ int	min_value_pos(t_stack **ptr)
 
 void	get_index(t_stack *node, int size)
 {
-	t_stack	*top;
+	t_stack	*end;
 	t_stack	*current;
-	int		value;
+	int		min_value;
 
-	top = NULL;
+	end = NULL;
 	while (size > 0)
 	{
 		current = node;
-		value = INT_MIN;
+		min_value = INT_MIN;
 		while (current)
 		{
 			if (current->value == INT_MIN && current->index == 0)
 				current->index = 1;
-			if (current->value > value && current->index == 0)
+			if (current->value > min_value && current->index == 0)
 			{
-				value = current->value;
-				top = current;
+				min_value = current->value;
+				end = current;
 				current = node;
 			}
 			current = current->next;
 		}
-		if (top)
-			top->index = size;
+		if (end)
+			end->index = size;
 		size--;
 	}
 }

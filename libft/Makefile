@@ -47,6 +47,7 @@ SRC			=	ft_atoi.c					\
     			ft_puthex.c					\
     			ft_putnbr.c					\
     			ft_putstr.c					\
+    			ft_puttab.c					\
     			ft_split.c					\
     			ft_scanf.c					\
     			ft_sort_int_tab.c			\

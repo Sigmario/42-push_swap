@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/08 23:58:44 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/09 00:20:41 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	push(t_stack **current, t_stack **adjacent)
 {
-	t_stack *current_node;
-	int current_top;
+	t_stack	*current_node;
+	int		current_top;
 
 	current_node = *current;
 	current_top = current_node->value;

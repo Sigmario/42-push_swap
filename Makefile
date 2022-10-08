@@ -14,6 +14,8 @@ SRCDIR		= 	src/
 SRC			=	push_swap.c		\
 				get_values.c	\
 				get_index.c		\
+				swap.c			\
+				push.c			\
 
 OBJDIR		= 	obj/
 OBJ			= 	$(addprefix $(OBJDIR), $(SRC:.c=.o))

@@ -52,6 +52,7 @@ size_t			ft_linelen(char *line);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstclear(t_list **lst, void (*d)(void *));
+void			ft_lstdelnode(t_list *lst);
 void			ft_lstdelone(t_list *lst, void (*d)(void *));
 void			ft_lstdisplay(t_list *lst);
 void			ft_lstiter(t_list *lst, void (*f)(void *));

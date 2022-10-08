@@ -51,6 +51,7 @@ void		rrr(t_stack **a, t_stack **b);
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
 void		stackclear(t_stack **ptr, void (*d)(int));
+void		stackdelnode(t_stack **node);
 void		stackdelone(t_stack *node, void (*d)(int));
 void		stackdisplay(t_stack *a, t_stack *b);
 void		stackiter(t_stack *node, void (*f)(int));

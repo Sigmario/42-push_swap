@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 21:57:37 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/04 12:54:56 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:38:59 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,23 @@ void	ft_lstdisplay(t_list *lst)
 
 void	stackdisplay(t_stack *a, t_stack *b)
 {
-	while ((a) || (a && b))
+	while (a || b)
 	{
-		ft_puttabs(ft_itoa(a->value), 2);
-		ft_putendl(ft_itoa(b->value));
-		a = a->next;
-		b = b->next;
+		if (!a)
+			ft_puttabs("", 2);
+		else if (a)
+		{
+			if ((ft_nbrlen(a->value) > 7) || (a->value == INT_MIN))
+				ft_puttabs(ft_itoa(a->value), 1);
+			else
+				ft_puttabs(ft_itoa(a->value), 2);
+			a = a->next;
+		}
+		if (b)
+		{
+			ft_printf("%d", (b->value));
+			b = b->next;
+		}
+		ft_putendl("");
 	}
-	if ((a == NULL) || (a && b == NULL))
-		return ;
 }

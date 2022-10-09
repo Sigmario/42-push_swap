@@ -21,10 +21,9 @@ int	main(int arc, char **arv)
 	if (arc > 1)
 	{
 		a_stack = get_values(arc, arv);
-		b_stack = stacknew(6532);
+		b_stack = NULL;
 		size = stacksize(a_stack);
 		get_index(a_stack, size);
-		pa(&a_stack, &b_stack);
 		puts("");
 		ft_printf("Stack A\t\tStack B\n");
 		puts("-------------------------");

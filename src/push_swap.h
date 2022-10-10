@@ -58,6 +58,7 @@ void		stackiter(t_stack *node, void (*f)(int));
 t_stack		*stacklast(t_stack *node);
 t_stack		*stackmap(t_stack *node, int (*f)(int), void (*d)(int));
 t_stack		*stacknew(int value);
+int			stackpop(t_stack **ptr);
 int			stacksize(t_stack *node);
 
 #endif

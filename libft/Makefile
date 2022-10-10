@@ -32,6 +32,7 @@ SRC			=	ft_atoi.c					\
 				ft_lstlast.c				\
 				ft_lstmap.c					\
 				ft_lstnew.c					\
+				ft_lstpop.c					\
 				ft_lstsize.c				\
     			ft_memchr.c 				\
     			ft_memcmp.c 				\

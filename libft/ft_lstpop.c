@@ -1,50 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/09 17:39:22 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/10/10 11:32:02 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/10/10 17:10:56 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static int	pop(t_stack **ptr)
+void	*ft_lstpop(t_list **lst)
 {
-	t_stack	*next_node;
-	int		result;
+	t_list	*next_node;
+	void	*retvalue;
 
 	next_node = NULL;
-	result = -1;
+	retvalue = NULL;
+	if (*lst == NULL)
+		return (NULL);
+	next_node = (*lst)->next;
+	retvalue = (*lst)->content;
+	free(*lst);
+	*lst = next_node;
+	return (retvalue);
+}
+
+int	stackpop(t_stack **ptr)
+{
+	t_stack	*next_node;
+	int		retvalue;
+
+	next_node = NULL;
+	retvalue = 0;
 	if (*ptr == NULL)
-		return (-1);
+		return (0);
 	next_node = (*ptr)->next;
-	result = (*ptr)->value;
+	retvalue = (*ptr)->value;
 	free(*ptr);
 	*ptr = next_node;
-	return (result);
-}
-
-static void	push(t_stack **current, t_stack **adjacent)
-{
-	t_stack	*current_node;
-	int		current_top;
-
-	current_node = *current;
-	current_top = current_node->value;
-	stackadd_front(adjacent, stacknew(current_top));
-	pop(current);
-}
-
-void	pa(t_stack **a, t_stack **b)
-{
-	push(b, a);
-}
-
-void	pb(t_stack **a, t_stack **b)
-{
-	push(a, b);
+	return (retvalue);
 }

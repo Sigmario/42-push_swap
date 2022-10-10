@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ops_r_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 12:37:22 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/08 18:58:16 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/10/10 12:51:50 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/10/10 17:40:58 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack *node)
-{
-	int	first;
-	int	second;
-
-	if (!node)
-		return ;
-	first = node->value;
-	if (!node->next)
-		return ;
-	second = node->next->value;
-	node->value = second;
-	node->next->value = first;
-}
-
-void	sa(t_stack **a)
+static void	rotate(t_stack **ptr)
 {
 	t_stack	*node;
+	int		last;
 
-	node = *a;
-	swap(node);
+	if (!*ptr)
+		return ;
+	node = stacklast(*ptr);
+	last = node->value;
+	stackadd_front(ptr, stacknew(last));
+	while ((*ptr)->next != NULL)
+	{
+		if ((*ptr)->next == NULL)
+			stackpop(ptr);
+		(*ptr) = (*ptr)->next;
+	}
 }
 
-void	sb(t_stack **b)
+void	rra(t_stack **a)
 {
-	t_stack	*node;
-
-	node = *b;
-	swap(node);
+	rotate(a);
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	rrb(t_stack **b)
 {
-	sa(a);
-	sb(b);
+	rotate(b);
 }

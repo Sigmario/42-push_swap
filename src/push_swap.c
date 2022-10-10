@@ -16,6 +16,7 @@ int	main(int arc, char **arv)
 {
 	t_stack	*a_stack;
 	t_stack	*b_stack;
+	int		min_value;
 	int		size;
 
 	if (arc > 1)
@@ -23,13 +24,15 @@ int	main(int arc, char **arv)
 		a_stack = get_values(arc, arv);
 		b_stack = NULL;
 		size = stacksize(a_stack);
+		min_value = min_value_pos(&a_stack);
 		get_index(a_stack, size);
 		puts("");
 		ft_printf("Stack A\t\tStack B\n");
 		puts("-------------------------");
+		rra(&a_stack);
 		stackdisplay(a_stack, b_stack);
 		puts("-------------------------");
-		ft_printf("Min value position:\t%d\n", min_value_pos(&a_stack));
+		ft_printf("Min value position:\t%d\n", min_value);
 		ft_printf("Number of values:\t%d\n", size);
 	}
 	return (0);

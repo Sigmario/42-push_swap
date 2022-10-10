@@ -59,6 +59,7 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*d)(void *));
 t_list			*ft_lstnew(void *content);
+void			*ft_lstpop(t_list **lst);
 int				ft_lstsize(t_list *lst);
 void			*ft_memchr(void *s, int c, size_t n);
 int				ft_memcmp(void *s1, void *s2, size_t n);

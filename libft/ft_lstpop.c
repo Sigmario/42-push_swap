@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:32:02 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/10 17:10:56 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:23:41 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,15 @@ int	stackpop(t_stack **ptr)
 	free(*ptr);
 	*ptr = next_node;
 	return (retvalue);
+}
+
+void	stackpop_last(t_stack **ptr)
+{
+	t_stack	*node;
+
+	node = *ptr;
+	while (node->next->next != NULL)
+		node = node->next;
+	node->next = NULL;
+	free(node->next);
 }

@@ -24,12 +24,11 @@ int	main(int arc, char **arv)
 		a_stack = get_values(arc, arv);
 		b_stack = NULL;
 		size = stacksize(a_stack);
-		min_value = min_value_pos(&a_stack);
 		get_index(a_stack, size);
+		min_value = min_value_pos(&a_stack);
 		puts("");
 		ft_printf("Stack A\t\tStack B\n");
 		puts("-------------------------");
-		rra(&a_stack);
 		stackdisplay(a_stack, b_stack);
 		puts("-------------------------");
 		ft_printf("Min value position:\t%d\n", min_value);

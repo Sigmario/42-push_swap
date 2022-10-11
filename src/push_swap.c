@@ -14,22 +14,23 @@
 
 int	main(int arc, char **arv)
 {
-	t_stack	*a_stack;
-	t_stack	*b_stack;
+	t_stack	stack;
 	int		min_value;
 	int		size;
 
 	if (arc > 1)
 	{
-		a_stack = get_values(arc, arv);
-		b_stack = NULL;
-		size = stacksize(a_stack);
-		get_index(a_stack, size);
-		min_value = min_value_pos(&a_stack);
+		stack.a = get_values(arc, arv);
+		stack.b = NULL;
+		size = stacksize(stack.a);
+		get_index(stack.a, size);
+		min_value = min_value_pos(&stack.a);
+		if (sorted(&stack.a) == TRUE)
+			return (exit(EXIT_FAILURE), 0);
 		puts("");
 		ft_printf("Stack A\t\tStack B\n");
 		puts("-------------------------");
-		stackdisplay(a_stack, b_stack);
+		stackdisplay(stack.a, stack.b);
 		puts("-------------------------");
 		ft_printf("Min value position:\t%d\n", min_value);
 		ft_printf("Number of values:\t%d\n", size);

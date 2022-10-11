@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/08 23:53:24 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:52:46 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	get_pos(t_stack **ptr)
 	int		count;
 
 	current = *ptr;
-	count = 0;
+	count = 1;
 	while (current)
 	{
 		current->pos = count;
@@ -46,7 +46,7 @@ int	min_value_pos(t_stack **ptr)
 		}
 		current = current->next;
 	}
-	return (min_value_pos + 1);
+	return (min_value_pos);
 }
 
 void	get_index(t_stack *node, int size)

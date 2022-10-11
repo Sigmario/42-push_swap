@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_functions.c                                  :+:      :+:    :+:   */
+/*   get_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -76,4 +76,18 @@ t_stack	*get_values(int size, char **arv)
 		array_to_list(array, size, &node);
 	}
 	return (node);
+}
+
+int	sorted(t_stack **ptr)
+{
+	t_stack	*node;
+
+	node = *ptr;
+	while (node)
+	{
+		if (node->pos != node->index)
+			return (FALSE);
+		node = node->next;
+	}
+	return (TRUE);
 }

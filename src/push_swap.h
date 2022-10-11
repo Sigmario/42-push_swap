@@ -17,6 +17,8 @@
 
 typedef struct s_stack
 {
+	struct s_stack	*a;
+	struct s_stack	*b;
 	int				value;
 	int				index;
 	int				pos;
@@ -26,15 +28,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-/*			INITIALIZATION:												  */
+/*			INITIALIZATION													  */
 t_stack		*get_values(int size, char **arv);
+int			sorted(t_stack **ptr);
 void		get_index(t_stack *node, int size);
-void		display_list(t_stack *node);
-
-/*			INFORMATIONS:												  */
 int			min_value_pos(t_stack **ptr);
 
-/*			OPERATIONS:													  */
+/*			OPERATIONS														  */
 void		sa(t_stack **a);
 void		sb(t_stack **b);
 void		ss(t_stack **a, t_stack **b);
@@ -47,7 +47,7 @@ void		rra(t_stack **a);
 void		rrb(t_stack **b);
 void		rrr(t_stack **a, t_stack **b);
 
-/*			LIBFT RELATED:												  */
+/*			LIBFT RELATED													  */
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
 void		stackclear(t_stack **ptr, void (*d)(int));

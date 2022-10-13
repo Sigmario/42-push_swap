@@ -27,6 +27,7 @@ int	main(int arc, char **arv)
 		min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
+		sort_three(&stack.a);
 		puts("");
 		ft_printf("Stack A\t\tStack B\n");
 		puts("-------------------------");

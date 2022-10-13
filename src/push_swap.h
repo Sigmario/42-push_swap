@@ -34,6 +34,9 @@ int			sorted(t_stack **ptr);
 void		get_index(t_stack *node, int size);
 int			min_value_pos(t_stack **ptr);
 
+/*			SORT															  */
+int			sort_three(t_stack **ptr);
+
 /*			OPERATIONS														  */
 void		sa(t_stack **a);
 void		sb(t_stack **b);

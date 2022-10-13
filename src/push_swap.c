@@ -27,12 +27,12 @@ int	main(int arc, char **arv)
 		min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
-		sort_three(&stack.a);
-		puts("");
-		ft_printf("Stack A\t\tStack B\n");
+		sort_five(&stack.a, &stack.b);
 		puts("-------------------------");
 		stackdisplay(stack.a, stack.b);
 		puts("-------------------------");
+		ft_printf("Stack A\t\tStack B\n");
+		puts("");
 		ft_printf("Min value position:\t%d\n", min_value);
 		ft_printf("Number of values:\t%d\n", size);
 	}

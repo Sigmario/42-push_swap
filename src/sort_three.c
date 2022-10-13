@@ -6,32 +6,34 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:06:47 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/13 15:19:55 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:20:40 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sort_three(t_stack **ptr)
+int	sort_three(t_stack **a)
 {
 	t_stack	*node;
 	int		first;
 	int		second;
 	int		third;
 
-	node = *ptr;
+	node = *a;
 	first = node->index;
 	second = node->next->index;
+	if (first > second && !node->next->next)
+		return (sa(a), ft_printf("sa\n"), 0);
 	third = node->next->next->index;
-	if (first > second && second < third && third > first)
-		return (sa(ptr), ft_printf("sa\n"), 0);
 	if (first > second && second < third && third < first)
-		return (ra(ptr), ft_printf("ra\n"), 0);
+		return (ra(a), ft_printf("ra\n"), 0);
 	if (first < second && second > third && third < first)
-		return (rra(ptr), ft_printf("rra\n"), 0);
+		return (rra(a), ft_printf("rra\n"), 0);
+	if (first > second && second < third && third > first)
+		return (sa(a), ft_printf("sa\n"), 0);
 	if (first < second && second > third && third > first)
-		return (sa(ptr), ra(ptr), ft_printf("sa\nra\n"), 0);
+		return (sa(a), ra(a), ft_printf("sa\nra\n"), 0);
 	if (first > second && second > third && third < first)
-		return (ra(ptr), sa(ptr), ft_printf("ra\nsa\n"), 0);
+		return (ra(a), sa(a), ft_printf("ra\nsa\n"), 0);
 	return (0);
 }

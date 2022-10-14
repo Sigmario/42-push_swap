@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:06:47 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/13 20:33:26 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/14 18:03:57 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	sort_three(t_stack **a)
 	second = (*a)->next->index;
 	third = (*a)->next->next->index;
 	if (first > second && second < third && third < first)
-		return (ra(a), ft_printf("ra\n"), 0);
+		return (ra(a), 0);
 	if (first < second && second > third && third < first)
-		return (rra(a), ft_printf("rra\n"), 0);
+		return (rra(a), 0);
 	if (first > second && second < third && third > first)
-		return (sa(a), ft_printf("sa\n"), 0);
+		return (sa(a), 0);
 	if (first < second && second > third && third > first)
-		return (sa(a), ra(a), ft_printf("sa\nra\n"), 0);
+		return (sa(a), ra(a), 0);
 	if (first > second && second > third && third < first)
-		return (ra(a), sa(a), ft_printf("ra\nsa\n"), 0);
+		return (ra(a), sa(a), 0);
 	return (0);
 }

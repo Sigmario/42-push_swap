@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:32:02 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/11 15:23:41 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:08:33 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,12 @@ void	stackpop_last(t_stack **ptr)
 {
 	t_stack	*node;
 
+	if (!*ptr || !(*ptr)->next)
+		return ;
 	node = *ptr;
-	while (node->next->next != NULL)
+	while (node->next->next)
 		node = node->next;
+	node->next->next = *ptr;
+	*ptr = node->next;
 	node->next = NULL;
-	free(node->next);
 }

@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/14 18:53:20 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:43:09 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 static void	push(t_stack **current, t_stack **adjacent)
 {
-	t_stack	*current_node;
-	int		index;
-	int		current_top;
+	t_stack	*first_node;
+	t_stack	*second_node;
 
-	if (!*current)
-		return ;
-	current_node = *current;
-	index = current_node->index;
-	current_top = current_node->value;
-	stackpop(current);
-	stackadd_front(adjacent, stacknew(current_top));
-	(*adjacent)->index = index;
+	first_node = *current;
+	second_node = (*current)->next;
+	(*current)->next = *adjacent;
+	*adjacent = first_node;
+	*current = second_node;
 }
 
 void	pa(t_stack **a, t_stack **b)

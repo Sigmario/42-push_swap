@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:37:22 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/14 18:36:38 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:58:16 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 
 static void	swap(t_stack **ptr)
 {
-	t_stack	*node;
-	int		first;
+	int	first;
+	int	first_index;
+	int	second;
+	int	second_index;
 
 	if (!*ptr)
 		return ;
-	node = *ptr;
-	first = node->value;
-	if (!node->next)
+	first = (*ptr)->value;
+	first_index = (*ptr)->index;
+	if (!(*ptr)->next)
 		return ;
-	first = node->next->value;
-	node->next->value = first;
+	second = (*ptr)->next->value;
+	second_index = (*ptr)->next->index;
+	(*ptr)->value = second;
+	(*ptr)->index = second_index;
+	(*ptr)->next->value = first;
+	(*ptr)->next->index = first_index;
 }
 
 void	sa(t_stack **a)

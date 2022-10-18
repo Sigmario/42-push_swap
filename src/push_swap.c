@@ -27,7 +27,7 @@ int	main(int arc, char **arv)
 		min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
-		hold_first(&stack.a, &stack.b);
+		sort_hundred(&stack.a, &stack.b);
 		puts("-------------------------");
 		stackdisplay(stack.a, stack.b);
 		puts("-------------------------");

@@ -6,48 +6,44 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/17 17:52:49 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:59:27 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	move_to_top(t_stack **a, t_stack **b, int i)
+int	sort_hundred(t_stack **a, t_stack **b)
 {
-	while (i != 1)
-	{
-		ra(a);
-		i--;
-	}
-	if ((!(*b)) || ((*a)->index > (*b)->index))
-		pb(a, b);
-	else if ((*a)->index < (*b)->index)
-	{
-		pb(a, b);
-		rb(b);
-	}
-}
+	int	quart;
+	int	bucket[5];
+	int	count;
 
-int	hold_first(t_stack **a, t_stack **b)
-{
-	int		loop;
-	t_stack	*a_node;
-
-	loop = TRUE;
-	a_node = *a;
-	while (loop)
+	quart = (stacksize(*a) / 4);
+	bucket[1] = 1;
+	bucket[2] = quart * 2;
+	bucket[3] = quart * 2 + 1;
+	bucket[4] = quart * 4;
+	count = quart;
+	while (*a)
 	{
-		while ((a_node)->index != (stacksize(a_node) / 2))
+		while (count <= stacksize(*a))
 		{
-			loop = FALSE;
-			if (a_node && a_node->index >= 1 && a_node->index <= 20)
+			if ((*a)->index >= bucket[1] && (*a)->index <= bucket[2])
 			{
-				move_to_top(a, b, a_node->pos);
-				loop = TRUE;
+				pb(a, b);
+				rb(b);
 			}
-			a_node = a_node->next;
-			// ft_printf("%p", a_node);
+			else if ((*a)->index >= bucket[3] && (*a)->index <= bucket[4])
+				pb(a, b);
+			else
+				ra(a);
+			count++;
 		}
+		bucket[1] -= quart;
+		bucket[2] += quart;
+		bucket[3] -= quart;
+		bucket[4] += quart;
+		count = 0;
 	}
 	return (0);
 }

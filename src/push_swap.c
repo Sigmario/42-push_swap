@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+static void	checks(t_stack **a, t_stack **b)
+{
+	if (stacksize(*a) == 2 && (*a)->value > (*a)->next->value)
+		sa(a);
+	else if (stacksize(*a) == 3)
+		sort_three(a);
+	else if (stacksize(*a) == 4)
+		sort_four(a, b, 1);
+	else if (stacksize(*a) == 5)
+		sort_five(a, b);
+	else
+		sort_hundred(a, b);
+}
+
 int	main(int arc, char **arv)
 {
 	t_stack	stack;
@@ -27,7 +41,7 @@ int	main(int arc, char **arv)
 		min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
-		sort_hundred(&stack.a, &stack.b);
+		checks(&stack.a, &stack.b);
 		puts("-------------------------");
 		stackdisplay(stack.a, stack.b);
 		puts("-------------------------");

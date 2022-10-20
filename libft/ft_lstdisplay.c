@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 21:57:37 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/08 23:38:59 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:12:36 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	stackdisplay(t_stack *a, t_stack *b)
 		else if (a)
 		{
 			if ((ft_nbrlen(a->value) > 7) || (a->value == INT_MIN))
-				ft_puttabs(ft_itoa(a->value), 1);
+				ft_printf("%d\t", a->value);
 			else
-				ft_puttabs(ft_itoa(a->value), 2);
+				ft_printf("%d\t\t", a->value);
 			a = a->next;
 		}
 		if (b)

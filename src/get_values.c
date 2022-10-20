@@ -26,8 +26,6 @@ static int	array_to_list(int *array, int size, t_stack **ptr)
 	}
 	if (!(*ptr)->next)
 		return (0);
-	if ((*ptr)->value > (*ptr)->next->value && !(*ptr)->next->next)
-		return (sa(ptr), ft_printf("sa\n"), 0);
 	return (0);
 }
 

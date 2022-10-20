@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/18 14:59:27 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/20 09:11:59 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	sort_hundred(t_stack **a, t_stack **b)
 				rb(b);
 			}
 			else if ((*a)->index >= bucket[3] && (*a)->index <= bucket[4])
+			{
 				pb(a, b);
+			}
 			else
 				ra(a);
 			count++;
 		}
 		bucket[1] -= quart;
-		bucket[2] += quart;
-		bucket[3] -= quart;
 		bucket[4] += quart;
 		count = 0;
 	}

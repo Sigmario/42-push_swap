@@ -36,6 +36,7 @@ int			min_value_pos(t_stack **ptr);
 
 /*			SORT															  */
 int			sort_three(t_stack **a);
+int			sort_four(t_stack **a, t_stack **b, int index);
 int			sort_five(t_stack **a, t_stack **b);
 int			sort_hundred(t_stack **a, t_stack **b);
 

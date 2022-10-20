@@ -32,9 +32,9 @@ int	ft_atoi(char *str)
 	while (str[i[0]] >= '0' && str[i[0]] <= '9')
 	{
 		result = result * 10 + str[i[0]] - 48;
-		if ((unsigned long)result > LONG_MAX && i[1] == 1)
+		if ((unsigned long)result > INT_MAX && i[1] == 1)
 			return (-1);
-		if ((unsigned long)result > LONG_MAX && i[1] == -1)
+		if ((unsigned long)result > INT_MAX && i[1] == -1)
 			return (0);
 		i[0]++;
 	}

@@ -16,11 +16,11 @@ static void	checks(t_stack **a, t_stack **b)
 {
 	if (stacksize(*a) == 2 && (*a)->value > (*a)->next->value)
 		sa(a);
-	else if (stacksize(*a) == 3)
+	if (stacksize(*a) == 3)
 		sort_three(a);
-	else if (stacksize(*a) == 4)
+	if (stacksize(*a) == 4)
 		sort_four(a, b, 1);
-	else if (stacksize(*a) == 5)
+	if (stacksize(*a) == 5)
 		sort_five(a, b);
 	else
 		sort_hundred(a, b);

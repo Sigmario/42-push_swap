@@ -6,44 +6,73 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/20 09:11:59 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:16:50 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	top(t_stack **ptr, int count, t_stack **a, t_stack **b)
+{
+	int i;
+
+	i = 1;
+	get_index(*ptr, stacksize(*ptr));
+	if ((*ptr)->index <= (*ptr)->chunk)
+	{
+		while (i < count)
+		{
+			ra(a);
+			i++;
+		}
+		pb(a, b);
+	}
+	printf("------\n");
+	printf("\t\t\t\t\tvalue: %d\n", (*ptr)->value);
+	printf("\t\t\t\t\t\t\tindex: %d\n", (*ptr)->index);
+	printf("\t\tchunk: %d\n", (*ptr)->chunk);
+	printf("count: %d\n", count);
+}
+
 int	sort_hundred(t_stack **a, t_stack **b)
 {
-	int	quart;
-	int	bucket[5];
-	int	count;
+	int		i;
+	int		tmp;
+	int		limit;
+	t_stack	*current;
+	int		quarter;
+	int		chunk;
 
-	quart = (stacksize(*a) / 4);
-	bucket[1] = 1;
-	bucket[2] = quart * 2;
-	bucket[3] = quart * 2 + 1;
-	bucket[4] = quart * 4;
-	count = quart;
-	while (*a)
+	i = 1;
+	limit = 1;
+	current = *a;
+	quarter = stacksize(*a) / 4;
+	chunk = quarter;
+	while (current)
 	{
-		while (count <= stacksize(*a))
+		if (current->index <= chunk)
 		{
-			if ((*a)->index >= bucket[1] && (*a)->index <= bucket[2])
+			tmp = current->index;
+			current->pos = (*a)->pos;
+			current->chunk = chunk;
+			top(&current, i, a, b);
+			current->index = tmp;
+			printf("count: %d\tchunk: %d\tpos: %d\tvalue: %d\tindex: %d\n", i, chunk, current->pos, current->value, current->index);
+			printf("------\n\n");
+			(*a)->pos = current->pos;
+			i++;
+		}
+		if (i == chunk)
+		{
+			if (limit != 2)
 			{
-				pb(a, b);
-				rb(b);
-			}
-			else if ((*a)->index >= bucket[3] && (*a)->index <= bucket[4])
-			{
-				pb(a, b);
+				limit++;
+				chunk += quarter;
 			}
 			else
-				ra(a);
-			count++;
+				limit = 2;
 		}
-		bucket[1] -= quart;
-		bucket[4] += quart;
-		count = 0;
+		current = current->next;
 	}
 	return (0);
 }

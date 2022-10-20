@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/19 17:02:41 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:15:41 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	push(t_stack **current, t_stack **adjacent)
 	(*current)->next = *adjacent;
 	*adjacent = first_node;
 	*current = second_node;
+	get_pos(current);
+	get_pos(adjacent);
 }
 
 void	pa(t_stack **a, t_stack **b)

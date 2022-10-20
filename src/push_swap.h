@@ -22,15 +22,14 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				pos;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
+	int				chunk;
 	struct s_stack	*next;
 }	t_stack;
 
 /*			INITIALIZATION													  */
 t_stack		*get_values(int size, char **arv);
 int			sorted(t_stack **ptr);
+void		get_pos(t_stack **ptr);
 void		get_index(t_stack *node, int size);
 int			min_value_pos(t_stack **ptr);
 

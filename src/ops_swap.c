@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:37:22 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/16 16:58:16 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:16:13 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	swap(t_stack **ptr)
 	(*ptr)->index = second_index;
 	(*ptr)->next->value = first;
 	(*ptr)->next->index = first_index;
+	get_pos(ptr);
 }
 
 void	sa(t_stack **a)

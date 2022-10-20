@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:26:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/19 20:39:57 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:16:07 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	rotate(t_stack **ptr)
 	stackpop(ptr);
 	stackadd_back(ptr, stacknew(first));
 	(*ptr)->index = index;
+	get_pos(ptr);
 }
 
 void	ra(t_stack **a)

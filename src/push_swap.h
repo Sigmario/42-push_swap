@@ -22,7 +22,6 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				pos;
-	int				chunk;
 	struct s_stack	*next;
 }	t_stack;
 

@@ -29,13 +29,13 @@ NAME		= 	push_swap
 
 LIBFT		=	./libft
 
-CC			= 	cc
+CC			= 	clang
 RM			= 	rm -f
 CFLAGS		= 	-Wall -Wextra -Werror -g
 
 $(NAME):		$(OBJ) libft/libft.a
 					@$(MAKE) --no-print-directory -C $(LIBFT)
-					@$(CC) $^ -o $@
+					$(CC) -g $^ -o $@
 
 $(OBJDIR)%.o:	$(SRCDIR)%.c
 					@mkdir -p $(OBJDIR)

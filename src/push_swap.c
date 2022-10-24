@@ -12,17 +12,18 @@
 
 #include "push_swap.h"
 
-static void	checks(t_stack **a, t_stack **b)
+void	checks(t_stack **a, t_stack **b)
 {
-	if (stacksize(*a) >= 2 && (*a)->value > (*a)->next->value)
+	if (stacksize(*a) == 2 && (*a)->value > (*a)->next->value)
 		sa(a);
-	if (stacksize(*a) >= 3)
+	if (stacksize(*a) == 3)
 		sort_three(a);
-	if (stacksize(*a) >= 4)
+	if (stacksize(*a) == 4)
 		sort_four(a, b, 1);
-	if (stacksize(*a) >= 5)
+	if (stacksize(*a) == 5)
 		sort_five(a, b);
-	sort_hundred(a, b);
+	else
+		sort_hundred(a, b);
 }
 
 int	main(int arc, char **arv)

@@ -15,6 +15,9 @@
 
 # include "../libft/libft.h"
 
+# define TOP 111
+# define BOTTOM 112
+
 typedef struct s_stack
 {
 	struct s_stack	*a;
@@ -33,6 +36,7 @@ void		get_index(t_stack *node, int size);
 int			min_value_pos(t_stack **ptr);
 
 /*			SORT															  */
+void		checks(t_stack **a, t_stack **b);
 int			sort_three(t_stack **a);
 int			sort_four(t_stack **a, t_stack **b, int index);
 int			sort_five(t_stack **a, t_stack **b);
@@ -55,6 +59,7 @@ void		rrr(t_stack **a, t_stack **b);
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
 void		stackclear(t_stack **ptr, void (*d)(int));
+t_stack		*stackcopy(t_stack *node);
 void		stackdelnode(t_stack **node);
 void		stackdelone(t_stack *node, void (*d)(int));
 void		stackdisplay(t_stack *a, t_stack *b);
@@ -64,6 +69,7 @@ t_stack		*stackmap(t_stack *node, int (*f)(int), void (*d)(int));
 t_stack		*stacknew(int value);
 int			stackpop(t_stack **ptr);
 void		stackpop_last(t_stack **ptr);
+void		stackrev(t_stack **ptr);
 int			stacksize(t_stack *node);
 
 #endif

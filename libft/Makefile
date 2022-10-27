@@ -26,7 +26,6 @@ SRC			=	ft_atoi.c					\
 				ft_lstadd_back.c			\
 				ft_lstadd_front.c			\
 				ft_lstclear.c				\
-				ft_lstcpy.c					\
 				ft_lstdelone.c				\
 				ft_lstdisplay.c				\
 				ft_lstiter.c				\

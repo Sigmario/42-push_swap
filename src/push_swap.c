@@ -29,7 +29,7 @@ void	checks(t_stack **a, t_stack **b)
 int	main(int arc, char **arv)
 {
 	t_stack	stack;
-	// int		min_value;
+	int		min_value;
 	int		size;
 
 	if (arc > 1)
@@ -39,17 +39,17 @@ int	main(int arc, char **arv)
 		size = stacksize(stack.a);
 		get_pos(&stack.a);
 		get_index(&stack.a, size);
-		// min_value = min_value_pos(&stack.a);
+		min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
 		checks(&stack.a, &stack.b);
-		// puts("-------------------------");
-		// stackdisplay(stack.a, stack.b);
-		// puts("-------------------------");
-		// ft_printf("Stack A\t\tStack B\n");
-		// puts("");
-		// ft_printf("Min value position:\t%d\n", min_value);
-		// ft_printf("Number of values:\t%d\n", size);
+		puts("-------------------------");
+		stackdisplay(stack.a, stack.b);
+		puts("-------------------------");
+		ft_printf("Stack A\t\tStack B\n");
+		puts("");
+		ft_printf("Min value position:\t%d\n", min_value);
+		ft_printf("Number of values:\t%d\n", size);
 	}
 	return (0);
 }

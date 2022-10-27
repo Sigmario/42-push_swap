@@ -32,9 +32,11 @@ typedef struct s_data
 {
 	int				chunk;
 	int				quarter;
+	int				value;
 	int				index;
 	int				count;
 	int				pos;
+	int				boolean;
 }	t_data;
 
 /*			INITIALIZATION													  */
@@ -49,7 +51,7 @@ void		checks(t_stack **a, t_stack **b);
 int			sort_three(t_stack **a);
 int			sort_four(t_stack **a, t_stack **b, int index);
 int			sort_five(t_stack **a, t_stack **b);
-int			sort_hundred(t_stack **a, t_stack **b);
+void		sort_hundred(t_stack **a, t_stack **b);
 
 /*			OPERATIONS														  */
 void		sa(t_stack **a);
@@ -68,7 +70,6 @@ void		rrr(t_stack **a, t_stack **b);
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
 void		stackclear(t_stack **ptr, void (*d)(int));
-t_stack		*stackcopy(t_stack *node);
 void		stackdelnode(t_stack **node);
 void		stackdelone(t_stack *node, void (*d)(int));
 void		stackdisplay(t_stack *a, t_stack *b);

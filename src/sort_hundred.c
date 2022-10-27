@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 11:57:51 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:02:25 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ static void	save1(t_data *data, int chunk, int quarter)
 			data->quarter = quarter;
 }
 
-static void	save2(t_data *data, int index, int pos)
+static void	save2(t_data *data, int value, int index, int pos)
 {
+			data->value = value;
 			data->index = index;
 			data->pos = pos;
 }
@@ -58,7 +59,7 @@ static t_stack	*top(t_data *data, t_stack **a, t_stack **b)
 	return (*a);
 }
 
-int	sort_hundred(t_stack **a, t_stack **b)
+void	sort_hundred(t_stack **a, t_stack **b)
 {
 	int		i;
 	t_data	data;
@@ -78,12 +79,11 @@ int	sort_hundred(t_stack **a, t_stack **b)
 		if (node->index >= (chunk - quarter + 1) && node->index <= chunk)
 		{
 			save1(&data, chunk, quarter);
-			save2(&data, node->index, node->pos);
+			save2(&data, node->value, node->index, node->pos);
 			node = top(&data, a, b);
 			++i;
 		}
 		else
 			(node) = (node)->next;
 	}
-	return (0);
 }

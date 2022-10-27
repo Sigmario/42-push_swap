@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 13:36:22 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/24 12:47:58 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:57:55 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_lstrev(t_list **ptr)
 {
-	t_list *prev;
-	t_list *current;
-	t_list *next;
+	t_list	*prev;
+	t_list	*current;
+	t_list	*next;
 
 	prev = NULL;
 	current = *ptr;
@@ -33,9 +33,9 @@ void	ft_lstrev(t_list **ptr)
 
 void	stackrev(t_stack **ptr)
 {
-	t_stack *prev;
-	t_stack *current;
-	t_stack *next;
+	t_stack	*prev;
+	t_stack	*current;
+	t_stack	*next;
 
 	prev = NULL;
 	current = *ptr;

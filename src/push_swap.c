@@ -29,7 +29,7 @@ void	checks(t_stack **a, t_stack **b)
 int	main(int arc, char **arv)
 {
 	t_stack	stack;
-	int		min_value;
+	// int		min_value;
 	int		size;
 
 	if (arc > 1)
@@ -37,8 +37,9 @@ int	main(int arc, char **arv)
 		stack.a = get_values(arc, arv);
 		stack.b = NULL;
 		size = stacksize(stack.a);
-		get_index(stack.a, size);
-		min_value = min_value_pos(&stack.a);
+		get_pos(&stack.a);
+		get_index(&stack.a, size);
+		// min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
 		checks(&stack.a, &stack.b);

@@ -6,20 +6,49 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/26 12:28:13 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 11:57:51 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*top(int chunk, int quarter, int index, int pos, t_stack **a, t_stack **b)
+static int	next_chunk(int count, int chunk, int quarter)
+{
+	int	next;
+
+	next = chunk;
+	next += quarter;
+	if (count == 4)
+		return (0);
+	if (count < 4)
+	{
+		count++;
+		chunk += quarter;
+	}
+	return (next);
+}
+
+static void	save1(t_data *data, int chunk, int quarter)
+{
+			data->chunk = chunk;
+			data->quarter = quarter;
+}
+
+static void	save2(t_data *data, int index, int pos)
+{
+			data->index = index;
+			data->pos = pos;
+}
+
+static t_stack	*top(t_data *data, t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = 1;
-	if (index >= (chunk - quarter + 1) && index <= chunk)
+	if (data->index >= (data->chunk - data->quarter + 1)
+		&& data->index <= data->chunk)
 	{
-		while (i < pos)
+		while (i < data->pos)
 		{
 			ra(a);
 			i++;
@@ -32,33 +61,29 @@ static t_stack	*top(int chunk, int quarter, int index, int pos, t_stack **a, t_s
 int	sort_hundred(t_stack **a, t_stack **b)
 {
 	int		i;
-	int		count;
+	t_data	data;
 	int		chunk;
+	t_stack	*node;
 	int		quarter;
-	t_stack *current;
 
-	i = 1;
-	count = 0;
-	current = *a;
+	i = 0;
+	data.count = 0;
+	node = *a;
 	quarter = stacksize(*a) / 4;
 	chunk = quarter;
-	while (current)
+	while (node)
 	{
-		get_index(current, stacksize(current));
 		if (i == chunk)
+			chunk = next_chunk(data.count, chunk, quarter);
+		if (node->index >= (chunk - quarter + 1) && node->index <= chunk)
 		{
-			count++;
-			if (count >= 4)
-				return (0);
-			else if (count < 4)
-				chunk += quarter;
+			save1(&data, chunk, quarter);
+			save2(&data, node->index, node->pos);
+			node = top(&data, a, b);
+			++i;
 		}
-		else if (current->index >= (chunk - quarter + 1) && current->index <= chunk)
-		{
-			current = top(chunk, quarter, (current)->index, (current)->pos, a, b);
-			i++;
-		}
-		(current) = (current)->next;
+		else
+			(node) = (node)->next;
 	}
 	return (0);
 }

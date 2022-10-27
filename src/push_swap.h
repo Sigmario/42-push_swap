@@ -28,11 +28,20 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_data
+{
+	int				chunk;
+	int				quarter;
+	int				index;
+	int				count;
+	int				pos;
+}	t_data;
+
 /*			INITIALIZATION													  */
 t_stack		*get_values(int size, char **arv);
 int			sorted(t_stack **ptr);
 void		get_pos(t_stack **ptr);
-void		get_index(t_stack *node, int size);
+void		get_index(t_stack **ptr, int size);
 int			min_value_pos(t_stack **ptr);
 
 /*			SORT															  */

@@ -6,39 +6,25 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 16:32:29 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 22:02:19 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	next_chunk(int count, int chunk, int quarter)
+static int	next_chunk(t_data *data)
 {
-	int	next;
-
-	next = chunk;
-	next += quarter;
-	if (count == 4)
-		return (0);
-	if (count < 4)
+	if (data->count < 2)
 	{
-		count++;
-		chunk += quarter;
+		if (data->count == 2)
+			return (0);
+		else
+		{
+			data->count++;
+			return (data->chunk += data->quarter);
+		}
 	}
-	return (next);
-}
-
-static void	save1(t_data *data, int chunk, int quarter)
-{
-			data->chunk = chunk;
-			data->quarter = quarter;
-}
-
-static void	save2(t_data *data, int value, int index, int pos)
-{
-			data->value = value;
-			data->index = index;
-			data->pos = pos;
+	return (0);
 }
 
 static t_stack	*top(t_data *data, t_stack **a, t_stack **b)
@@ -63,25 +49,25 @@ void	get_chunks(t_stack **a, t_stack **b)
 {
 	int		i;
 	t_data	data;
-	int		chunk;
 	t_stack	*node;
-	int		quarter;
 
 	i = 0;
 	data.count = 0;
 	node = *a;
-	quarter = stacksize(*a) / 4;
-	chunk = quarter;
+	data.quarter = stacksize(*a) / 4;
+	data.chunk = data.quarter;
 	while (node)
 	{
-		if (i == chunk)
-			chunk = next_chunk(data.count, chunk, quarter);
-		if (node->index >= (chunk - quarter + 1) && node->index <= chunk)
+		if (i == data.chunk)
+			data.chunk = next_chunk(&data);
+		else if (node->index >= (data.chunk - data.quarter + 1)
+			&& node->index <= data.chunk)
 		{
-			save1(&data, chunk, quarter);
-			save2(&data, node->value, node->index, node->pos);
+			data.value = node->value;
+			data.index = node->index;
+			data.pos = node->pos;
 			node = top(&data, a, b);
-			++i;
+			i++;
 		}
 		else
 			(node) = (node)->next;

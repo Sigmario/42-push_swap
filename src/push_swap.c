@@ -16,11 +16,11 @@ void	checks(t_stack **a, t_stack **b)
 {
 	if (stacksize(*a) == 2 && (*a)->value > (*a)->next->value)
 		sa(a);
-	if (stacksize(*a) == 3)
+	else if (stacksize(*a) == 3)
 		sort_three(a);
-	if (stacksize(*a) == 4)
+	else if (stacksize(*a) == 4)
 		sort_four(a, b, 1);
-	if (stacksize(*a) == 5)
+	else if (stacksize(*a) == 5)
 		sort_five(a, b);
 	else
 		sort_hundred(a, b);
@@ -29,7 +29,6 @@ void	checks(t_stack **a, t_stack **b)
 int	main(int arc, char **arv)
 {
 	t_stack	stack;
-	int		min_value;
 	int		size;
 
 	if (arc > 1)
@@ -39,7 +38,6 @@ int	main(int arc, char **arv)
 		size = stacksize(stack.a);
 		get_pos(&stack.a);
 		get_index(&stack.a, size);
-		min_value = min_value_pos(&stack.a);
 		if (sorted(&stack.a) == TRUE)
 			return (exit(EXIT_FAILURE), 0);
 		checks(&stack.a, &stack.b);
@@ -48,7 +46,6 @@ int	main(int arc, char **arv)
 		puts("-------------------------");
 		ft_printf("Stack A\t\tStack B\n");
 		puts("");
-		ft_printf("Min value position:\t%d\n", min_value);
 		ft_printf("Number of values:\t%d\n", size);
 	}
 	return (0);

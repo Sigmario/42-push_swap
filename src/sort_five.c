@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:17:14 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/19 18:04:06 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:16:34 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static int	finish(t_stack **a, t_stack **b)
 int	sort_four(t_stack **a, t_stack **b, int index)
 {
 	if (stacksize(*a) != 4)
-		return (ft_printf("Function 'sort_four' only works with 4 values.\n"), \
-		exit(EXIT_FAILURE), 0);
+		return (0);
 	if ((*a)->index == index)
 		return (pb(a, b), finish(a, b));
 	if ((*a)->next->index == index)
@@ -39,8 +38,7 @@ int	sort_four(t_stack **a, t_stack **b, int index)
 int	sort_five(t_stack **a, t_stack **b)
 {
 	if (stacksize(*a) != 5)
-		return (ft_printf("Function 'sort_five' only works with 5 values.\n"), \
-		exit(EXIT_FAILURE), 0);
+		return (0);
 	if ((*a)->index == 1)
 		return (pb(a, b), sort_four(a, b, 2));
 	if ((*a)->next->index == 1)

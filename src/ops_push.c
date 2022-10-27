@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 11:51:50 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:32:06 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 static void	push(t_stack **current, t_stack **adjacent)
 {
 	t_stack	*first;
-	t_stack	*second;
 
-	if (!*current)
-		return ;
 	first = *current;
-	second = (*current)->next;
-	(*current)->next = *adjacent;
-	*adjacent = first;
-	*current = second;
-	get_pos(current);
+	stackpop(current);
+	stackadd_front(adjacent, stacknew(first->value));
 }
 
 void	pa(t_stack **a, t_stack **b)
 {
+	if (!*b)
+		return ;
 	push(b, a);
 	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
+	if (!*a)
+		return ;
 	push(a, b);
 	ft_printf("pb\n");
 }

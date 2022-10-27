@@ -51,6 +51,7 @@ void		checks(t_stack **a, t_stack **b);
 int			sort_three(t_stack **a);
 int			sort_four(t_stack **a, t_stack **b, int index);
 int			sort_five(t_stack **a, t_stack **b);
+void		get_chunks(t_stack **a, t_stack **b);
 void		sort_hundred(t_stack **a, t_stack **b);
 
 /*			OPERATIONS														  */

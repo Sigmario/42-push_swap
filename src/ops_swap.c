@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:37:22 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 10:59:00 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:41:15 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,24 @@ static void	swap(t_stack **ptr)
 
 void	sa(t_stack **a)
 {
+	if (!*a || !(*a)->next)
+		return ;
 	swap(a);
 	ft_printf("sa\n");
 }
 
 void	sb(t_stack **b)
 {
+	if (!*b || !(*b)->next)
+		return ;
 	swap(b);
 	ft_printf("sb\n");
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
+	if ((!*a || !(*a)->next) || (!*b || !(*b)->next))
+		return ;
 	swap(a);
 	swap(b);
 	ft_printf("ss\n");

@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/28 21:36:05 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:35:43 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,15 @@ static t_stack	*push_to_a(int pos, t_stack **a, t_stack **b)
 
 void	sort_hundred(t_stack **a, t_stack **b)
 {
-	t_stack		*node;
-	t_data		data;
+	int		size;
+	t_stack *node;
+	t_data	data;
 
-	get_chunks(a, b);
+	size = stacksize(*a);
+	if (size <= 100)
+		get_chunks(4, a, b);
+	if (size > 100)
+		get_chunks(16, a, b);
 	node = *b;
 	while (node)
 	{

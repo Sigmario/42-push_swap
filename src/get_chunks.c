@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/28 13:40:24 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:28:03 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_stack	*push_to_b(t_data *data, t_stack **a, t_stack **b)
 	return (*a);
 }
 
-void	get_chunks(t_stack **a, t_stack **b)
+void	get_chunks(int times, t_stack **a, t_stack **b)
 {
 	int			i;
 	t_stack		*node;
@@ -38,7 +38,7 @@ void	get_chunks(t_stack **a, t_stack **b)
 
 	i = 0;
 	node = *a;
-	data.quarter = stacksize(*a) / 4;
+	data.quarter = stacksize(*a) / times;
 	data.chunk = data.quarter;
 	while (node)
 	{

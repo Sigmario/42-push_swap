@@ -6,13 +6,13 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 23:45:48 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/28 12:08:55 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*top(t_data *data, t_stack **a, t_stack **b)
+static t_stack	*push_to_b(t_data_a *data, t_stack **a, t_stack **b)
 {
 	int	i;
 
@@ -32,12 +32,11 @@ static t_stack	*top(t_data *data, t_stack **a, t_stack **b)
 
 void	get_chunks(t_stack **a, t_stack **b)
 {
-	int		i;
-	t_data	data;
-	t_stack	*node;
+	int			i;
+	t_stack		*node;
+	t_data_a	data;
 
 	i = 0;
-	data.count = 0;
 	node = *a;
 	data.quarter = stacksize(*a) / 4;
 	data.chunk = data.quarter;
@@ -51,7 +50,7 @@ void	get_chunks(t_stack **a, t_stack **b)
 			data.value = node->value;
 			data.index = node->index;
 			data.pos = node->pos;
-			node = top(&data, a, b);
+			node = push_to_b(&data, a, b);
 			i++;
 		}
 		else

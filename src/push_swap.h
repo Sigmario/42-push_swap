@@ -28,22 +28,17 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_data_a
+typedef struct s_data
 {
+	int				max_pos;
+	int				second_max_pos;
+	int				size;
 	int				chunk;
 	int				quarter;
 	int				value;
 	int				index;
 	int				pos;
-}	t_data_a;
-
-typedef struct s_data_b
-{
-	int				size;
-	int				value;
-	int				index;
-	int				pos;
-}	t_data_b;
+}	t_data;
 
 /*			INITIALIZATION													  */
 t_stack		*get_values(int size, char **arv);
@@ -52,6 +47,7 @@ void		get_pos(t_stack **ptr);
 void		get_index(t_stack **ptr, int size);
 int			min_value_pos(t_stack **ptr);
 int			max_value_pos(t_stack **ptr);
+int			second_max_value_pos(t_stack **ptr);
 
 /*			SORT															  */
 void		checks(t_stack **a, t_stack **b);

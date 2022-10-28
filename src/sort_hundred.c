@@ -6,50 +6,46 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/28 12:42:10 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:36:05 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*push_to_a(t_data_b *data, t_stack **a, t_stack **b)
+static t_stack	*push_to_a(int pos, t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = 1;
-	if (data->index == data->size)
+	while (i < pos)
 	{
-		while (i < data->size)
-		{
-			rb(b);
-			i++;
-		}
-		pa(a, b);
+		rb(b);
+		i++;
 	}
-	data->size = stacksize(*b);
+	pa(a, b);
+	while (i > 1)
+	{
+		rrb(b);
+		i--;
+	}
 	return (*b);
 }
 
 void	sort_hundred(t_stack **a, t_stack **b)
 {
-	int			i;
 	t_stack		*node;
-	t_data_b	data;
+	t_data		data;
 
 	get_chunks(a, b);
-	i = 0;
 	node = *b;
 	while (node)
 	{
-		data.size = max_value_pos(b);
-		if (node->index == data.size)
-		{
-			data.value = node->value;
-			data.index = node->index;
-			data.pos = node->pos;
-			node = push_to_a(&data, a, b);
-			i++;
-		}
+		data.pos = node->pos;
+		data.index = node->index;
+		data.size = stacksize(*b);
+		data.max_pos = max_value_pos(b);
+		if (data.index == data.size)
+			node = push_to_a(node->pos, a, b);
 		else
 			(node) = (node)->next;
 	}

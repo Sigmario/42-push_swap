@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/28 12:40:21 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:24:17 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,45 @@ int	max_value_pos(t_stack **ptr)
 {
 	t_stack	*current;
 	int		max_value_pos;
-	int		max_value_index;
 
-	current = *ptr;
-	max_value_index = INT_MIN;
 	get_pos(ptr);
-	max_value_pos = current->pos;
+	max_value_pos = INT_MIN;
+	current = *ptr;
 	while (current)
 	{
-		if (current->index > max_value_index)
-		{
-			max_value_index = current->index;
+		if (current->pos > max_value_pos)
 			max_value_pos = current->pos;
-		}
 		current = current->next;
 	}
 	return (max_value_pos);
+}
+
+int	second_max_value_pos(t_stack **ptr)
+{
+	t_stack *current;
+	int max_value_pos;
+	int	second_max_value_pos;
+	int size;
+
+	get_pos(ptr);
+	size = stacksize(*ptr);
+	if (size < 2)
+		return (0);
+	max_value_pos = INT_MIN;
+	second_max_value_pos = INT_MIN;
+	current = *ptr;
+    while (current)
+	{
+		if (current->pos > max_value_pos)
+		{
+			second_max_value_pos = max_value_pos;
+			max_value_pos = current->pos;
+        }
+		else if (current->pos > second_max_value_pos && current->pos != max_value_pos)
+			second_max_value_pos = current->pos;
+		current = current->next;
+	}
+	return (second_max_value_pos);
 }
 
 void	get_index(t_stack **ptr, int size)

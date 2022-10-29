@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/28 19:24:17 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/29 01:58:32 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int	max_value_pos(t_stack **ptr)
 
 int	second_max_value_pos(t_stack **ptr)
 {
-	t_stack *current;
-	int max_value_pos;
-	int	second_max_value_pos;
-	int size;
+	int		size;
+	t_stack	*current;
+	int		max_value_pos;
+	int		second_max_value_pos;
 
 	get_pos(ptr);
 	size = stacksize(*ptr);
@@ -80,14 +80,15 @@ int	second_max_value_pos(t_stack **ptr)
 	max_value_pos = INT_MIN;
 	second_max_value_pos = INT_MIN;
 	current = *ptr;
-    while (current)
+	while (current)
 	{
 		if (current->pos > max_value_pos)
 		{
 			second_max_value_pos = max_value_pos;
 			max_value_pos = current->pos;
-        }
-		else if (current->pos > second_max_value_pos && current->pos != max_value_pos)
+		}
+		else if (current->pos > second_max_value_pos
+			&& current->pos != max_value_pos)
 			second_max_value_pos = current->pos;
 		current = current->next;
 	}

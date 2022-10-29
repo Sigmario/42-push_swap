@@ -24,16 +24,3 @@ void	ft_lstclear(t_list **lst, void (*d)(void *))
 	}
 	*lst = NULL;
 }
-
-void	stackclear(t_stack **ptr, void (*d)(int))
-{
-	t_stack	*tmp;
-
-	while (*ptr)
-	{
-		tmp = (*ptr)->next;
-		stackdelone(*ptr, d);
-		*ptr = tmp;
-	}
-	*ptr = NULL;
-}

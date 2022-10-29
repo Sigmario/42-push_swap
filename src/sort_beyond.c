@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_chunks.c                                       :+:      :+:    :+:   */
+/*   sort_beyond.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 12:33:30 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/28 22:28:03 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/10/29 02:18:04 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*push_to_b(t_data *data, t_stack **a, t_stack **b)
+static t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
+{
+	int	i;
+
+	i = 1;
+	while (i < pos)
+	{
+		rb(b);
+		i++;
+	}
+	pa(a, b);
+	while (i > 1)
+	{
+		rrb(b);
+		i--;
+	}
+	return (*b);
+}
+
+static t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 {
 	int	i;
 
@@ -30,10 +49,10 @@ static t_stack	*push_to_b(t_data *data, t_stack **a, t_stack **b)
 	return (*a);
 }
 
-void	get_chunks(int times, t_stack **a, t_stack **b)
+static void	get_chunks(int times, t_stack **a, t_stack **b)
 {
-	int			i;
-	t_stack		*node;
+	int		i;
+	t_stack	*node;
 	t_data	data;
 
 	i = 0;
@@ -42,17 +61,41 @@ void	get_chunks(int times, t_stack **a, t_stack **b)
 	data.chunk = data.quarter;
 	while (node)
 	{
+		data.pos = node->pos;
+		data.index = node->index;
 		if (i == data.chunk)
 			data.chunk += data.quarter;
 		else if (node->index >= (data.chunk - data.quarter + 1)
 			&& node->index <= data.chunk)
 		{
-			data.value = node->value;
-			data.index = node->index;
-			data.pos = node->pos;
-			node = push_to_b(&data, a, b);
+			node = sort_to_b(&data, a, b);
 			i++;
 		}
+		else
+			(node) = (node)->next;
+	}
+}
+
+void	sort_beyond(t_stack **a, t_stack **b)
+{
+	int		size;
+	t_stack	*node;
+	t_data	data;
+
+	size = stacksize(*a);
+	if (size <= 100)
+		get_chunks(4, a, b);
+	if (size >= 100)
+		get_chunks(16, a, b);
+	node = *b;
+	while (node)
+	{
+		data.pos = node->pos;
+		data.index = node->index;
+		data.size = stacksize(*b);
+		data.max_pos = max_value_pos(b);
+		if (data.index == data.size)
+			node = sort_to_a(node->pos, a, b);
 		else
 			(node) = (node)->next;
 	}

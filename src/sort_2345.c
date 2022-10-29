@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:17:14 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 17:16:34 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/29 01:00:29 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,39 @@ static int	finish(t_stack **a, t_stack **b)
 		return (sort_three(a), pa(a, b), 0);
 	else
 		return (sort_three(a), pa(a, b), pa(a, b), 0);
+}
+
+int	sort_two(t_stack **a)
+{
+	if (stacksize(*a) != 2)
+		return (0);
+	if ((*a)->index > (*a)->next->index)
+		sa(a);
+	return (0);
+}
+
+int	sort_three(t_stack **a)
+{
+	int		first;
+	int		second;
+	int		third;
+
+	if (stacksize(*a) != 3)
+		return (0);
+	first = (*a)->index;
+	second = (*a)->next->index;
+	third = (*a)->next->next->index;
+	if (first > second && second < third && third < first)
+		return (ra(a), 0);
+	if (first < second && second > third && third < first)
+		return (rra(a), 0);
+	if (first > second && second < third && third > first)
+		return (sa(a), 0);
+	if (first < second && second > third && third > first)
+		return (sa(a), ra(a), 0);
+	if (first > second && second > third && third < first)
+		return (ra(a), sa(a), 0);
+	return (0);
 }
 
 int	sort_four(t_stack **a, t_stack **b, int index)

@@ -17,33 +17,3 @@ void	ft_lstdelone(t_list *lst, void (*d)(void *))
 	d(lst->content);
 	free(lst);
 }
-
-void	stackdelone(t_stack *node, void (*d)(int))
-{
-	d(node->value);
-	free(node);
-}
-
-void	ft_lstdelnode(t_list *lst)
-{
-	t_list	*temp;
-
-	if (lst)
-	{
-		temp = lst;
-		lst = lst->next;
-		free(temp);
-	}
-}
-
-void	stackdelnode(t_stack **node)
-{
-	t_stack	*top;
-
-	if (node)
-	{
-		top = *node;
-		top = top->next;
-		free(*node);
-	}
-}

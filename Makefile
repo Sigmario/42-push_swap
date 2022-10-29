@@ -18,10 +18,8 @@ SRC			=	push_swap.c		\
 				ops_push.c		\
 				ops_rotate.c	\
 				ops_r_rotate.c	\
-				sort_three.c	\
-				sort_five.c		\
-				get_chunks.c	\
-				sort_hundred.c	\
+				sort_2345.c		\
+				sort_beyond.c	\
 
 OBJDIR		= 	obj/
 OBJ			= 	$(addprefix $(OBJDIR), $(SRC:.c=.o))

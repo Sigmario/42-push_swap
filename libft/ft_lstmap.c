@@ -29,21 +29,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*d)(void *))
 	}
 	return (new);
 }
-
-t_stack	*stackmap(t_stack *node, int (*f)(int), void (*d)(int))
-{
-	t_stack	*new;
-	t_stack	*tmp;
-
-	new = 0;
-	while (node)
-	{
-		tmp = stacknew((*f)(node->value));
-		if (tmp == NULL)
-			stackclear(&tmp, d);
-		else
-			stackadd_back(&new, tmp);
-		node = node->next;
-	}
-	return (new);
-}

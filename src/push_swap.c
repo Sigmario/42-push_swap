@@ -36,6 +36,7 @@ int	main(int arc, char **arv)
 			sort_five(&stack.a, &stack.b);
 		else
 			sort_beyond(&stack.a, &stack.b);
+		// stackdisplay(stack.a, stack.b);
 	}
 	return (0);
 }

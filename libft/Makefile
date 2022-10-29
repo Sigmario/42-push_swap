@@ -25,6 +25,7 @@ SRC			=	ft_atoi.c					\
 				ft_linelen.c				\
 				ft_lstadd_back.c			\
 				ft_lstadd_front.c			\
+				ft_lstcpy.c					\
 				ft_lstclear.c				\
 				ft_lstdelone.c				\
 				ft_lstdisplay.c				\

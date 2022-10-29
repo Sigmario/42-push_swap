@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 13:36:22 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/27 14:57:55 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:17:15 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,27 @@ void	ft_lstrev(t_list **ptr)
 	*ptr = prev;
 }
 
-void	stackrev(t_stack **ptr)
+void	stackrev(t_stack *node)
 {
-	t_stack	*prev;
+	int		i;
 	t_stack	*current;
-	t_stack	*next;
+	int		*array;
 
-	prev = NULL;
-	current = *ptr;
-	next = NULL;
+	i = 0;
+	current = node;
+	array = (int *)malloc(sizeof(int) * stacksize(node));
 	while (current)
 	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
+		array[i] = current->value;
+		current = current->next;
+		i++;
 	}
-	*ptr = prev;
+	current = node;
+	i--;
+	while (current)
+	{
+		current->value = array[i];
+		current = current->next;
+		i--;
+	}
 }

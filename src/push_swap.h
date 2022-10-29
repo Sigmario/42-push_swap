@@ -15,6 +15,9 @@
 
 # include "../libft/libft.h"
 
+# define TOP 11
+# define BOTTOM 22
+
 typedef struct s_stack
 {
 	struct s_stack	*a;
@@ -35,6 +38,7 @@ typedef struct s_data
 	int				quarter;
 	int				max_pos;
 	int				second_max_pos;
+	int				bool;
 }	t_data;
 
 ////////////////////////////////////////////////////////////////
@@ -77,11 +81,13 @@ void		rrr(t_stack **a, t_stack **b);
 ////////////////////////////////////////////////////////////////////////////////
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
+t_stack		*stackcopy(t_stack *node);
 void		stackdisplay(t_stack *a, t_stack *b);
 t_stack		*stacklast(t_stack *node);
 t_stack		*stacknew(int value);
 int			stackpop(t_stack **ptr);
 void		stackpop_last(t_stack **ptr);
+void		stackrev(t_stack *node);
 int			stacksize(t_stack *node);
 
 #endif

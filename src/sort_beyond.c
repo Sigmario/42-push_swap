@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/30 04:03:29 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/30 14:29:03 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,30 @@ static t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 
 static t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 {
-	int	i;
+	int	a_start;
+	int	b_start;
 
-	i = 1;
+	a_start = 1;
+	b_start = 1;
 	if (data->index >= (data->chunk - data->quarter + 1)
 		&& data->index <= data->chunk)
 	{
-		while (i < data->pos)
+		while (a_start < data->pos)
 		{
 			ra(a);
-			i++;
+			a_start++;
+		}
+		while (b_start < a_start)
+		{
+			rb(b);
+			b_start++;
 		}
 		pb(a, b);
+		while (b_start > 1)
+		{
+			rrb(b);
+			b_start--;
+		}
 	}
 	return (*a);
 }
@@ -63,6 +75,7 @@ static void	get_chunks(int times, t_stack **a, t_stack **b)
 	{
 		data.pos = node->pos;
 		data.index = node->index;
+		data.max_pos = get_max_pos(b);
 		if (i == data.chunk)
 			data.chunk += data.quarter;
 		else if (node->index >= (data.chunk - data.quarter + 1)
@@ -90,7 +103,6 @@ void	sort_beyond(t_stack **a, t_stack **b)
 	node = *b;
 	while (node)
 	{
-		data.pos = node->pos;
 		data.index = node->index;
 		data.size = stacksize(*b);
 		data.max_pos = get_max_pos(b);

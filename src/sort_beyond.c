@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/30 14:29:03 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/30 21:04:39 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,15 @@ static t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 	int	a_start;
 	int	b_start;
 
-	a_start = 1;
-	b_start = 1;
+	a_start = 0;
+	b_start = 0;
 	if (data->index >= (data->chunk - data->quarter + 1)
 		&& data->index <= data->chunk)
 	{
-		while (a_start < data->pos)
-		{
+		while (++a_start < data->pos)
 			ra(a);
-			a_start++;
-		}
-		while (b_start < a_start)
-		{
+		while (++b_start < data->pos)
 			rb(b);
-			b_start++;
-		}
 		pb(a, b);
 		while (b_start > 1)
 		{
@@ -75,7 +69,7 @@ static void	get_chunks(int times, t_stack **a, t_stack **b)
 	{
 		data.pos = node->pos;
 		data.index = node->index;
-		data.max_pos = get_max_pos(b);
+		data.max_index = get_max_index(b);
 		if (i == data.chunk)
 			data.chunk += data.quarter;
 		else if (node->index >= (data.chunk - data.quarter + 1)
@@ -89,26 +83,53 @@ static void	get_chunks(int times, t_stack **a, t_stack **b)
 	}
 }
 
+static void	*max1_or_max2(t_stack *node, t_data *data,
+	t_stack **a, t_stack **b)
+{
+	if (data->sa_needed == FALSE && data->index == data->max_index)
+		node = sort_to_a(node->pos, a, b);
+	else if (data->sa_needed == TBD && data->index == data->sec_max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		data->sa_needed = TRUE;
+	}
+	else if (data->sa_needed == TRUE && data->index == data->max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		sa(a);
+		data->sa_needed = FALSE;
+	}
+	else if (data->sa_needed == FALSE && data->index == data->sec_max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		data->sa_needed = TRUE;
+	}
+	else
+		node = (node)->next;
+	return (node);
+}
+
 void	sort_beyond(t_stack **a, t_stack **b)
 {
 	int		size;
 	t_stack	*node;
 	t_data	data;
 
+	data.sa_needed = TBD;
 	size = stacksize(*a);
-	if (size <= 100)
-		get_chunks(5, a, b);
-	if (size > 100)
-		get_chunks(11, a, b);
+	if (size > 5 && size < 100)
+		get_chunks(2, a, b);
+	else if (size >= 100 && size < 500)
+		get_chunks(7.5, a, b);
+	else if (size >= 500)
+		get_chunks(11.5, a, b);
 	node = *b;
 	while (node)
 	{
 		data.index = node->index;
 		data.size = stacksize(*b);
-		data.max_pos = get_max_pos(b);
-		if (data.index == data.size)
-			node = sort_to_a(node->pos, a, b);
-		else
-			(node) = (node)->next;
+		data.max_index = get_max_index(b);
+		data.sec_max_index = get_2ndmax_index(b);
+		node = max1_or_max2(node, &data, a, b);
 	}
 }

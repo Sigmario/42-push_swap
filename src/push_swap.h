@@ -15,8 +15,7 @@
 
 # include "../libft/libft.h"
 
-# define TOP 11
-# define BOTTOM 22
+# define TBD 11
 
 typedef struct s_stack
 {
@@ -36,9 +35,9 @@ typedef struct s_data
 	int				index;
 	int				chunk;
 	int				quarter;
-	int				max_pos;
-	int				second_max_pos;
-	int				bool;
+	int				max_index;
+	int				sec_max_index;
+	int				sa_needed;
 }	t_data;
 
 ////////////////////////////////////////////////////////////////
@@ -48,9 +47,9 @@ t_stack		*get_values(int size, char **arv);
 void		get_pos(t_stack **ptr);
 void		get_index(t_stack **ptr, int size);
 int			get_min_value(t_stack **ptr);
-int			get_min_pos(t_stack **ptr);
-int			get_max_pos(t_stack **ptr);
-int			get_2ndmax_pos(t_stack **ptr);
+int			get_min_index(t_stack **ptr);
+int			get_max_index(t_stack **ptr);
+int			get_2ndmax_index(t_stack **ptr);
 
 ////////////////////////////////////////////////////////////////
 /////////////  S O R T I N G  //////////////////////////////////////////

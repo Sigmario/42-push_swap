@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/29 01:58:32 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/30 03:01:24 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	get_pos(t_stack **ptr)
 	}
 }
 
-int	min_value_pos(t_stack **ptr)
+int	get_min_pos(t_stack **ptr)
 {
 	t_stack	*current;
 	int		min_value_pos;
@@ -49,7 +49,7 @@ int	min_value_pos(t_stack **ptr)
 	return (min_value_pos);
 }
 
-int	max_value_pos(t_stack **ptr)
+int	get_max_pos(t_stack **ptr)
 {
 	t_stack	*current;
 	int		max_value_pos;
@@ -66,7 +66,7 @@ int	max_value_pos(t_stack **ptr)
 	return (max_value_pos);
 }
 
-int	second_max_value_pos(t_stack **ptr)
+int	get_2ndmax_pos(t_stack **ptr)
 {
 	int		size;
 	t_stack	*current;

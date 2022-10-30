@@ -93,3 +93,25 @@ int	sorted(t_stack **ptr)
 	}
 	return (TRUE);
 }
+
+int	get_min_value(t_stack **ptr)
+{
+	t_stack	*current;
+	int		min_value;
+	int		min_value_index;
+
+	current = *ptr;
+	min_value_index = INT_MAX;
+	get_pos(ptr);
+	min_value = current->value;
+	while (current)
+	{
+		if (current->index < min_value_index)
+		{
+			min_value_index = current->index;
+			min_value = current->value;
+		}
+		current = current->next;
+	}
+	return (min_value);
+}

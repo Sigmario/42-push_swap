@@ -47,18 +47,19 @@ typedef struct s_data
 t_stack		*get_values(int size, char **arv);
 void		get_pos(t_stack **ptr);
 void		get_index(t_stack **ptr, int size);
-int			sorted(t_stack **ptr);
-int			min_value_pos(t_stack **ptr);
-int			max_value_pos(t_stack **ptr);
-int			second_max_value_pos(t_stack **ptr);
+int			get_min_value(t_stack **ptr);
+int			get_min_pos(t_stack **ptr);
+int			get_max_pos(t_stack **ptr);
+int			get_2ndmax_pos(t_stack **ptr);
 
 ////////////////////////////////////////////////////////////////
 /////////////  S O R T I N G  //////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-int			sort_two(t_stack **a);
-int			sort_three(t_stack **a);
-int			sort_four(t_stack **a, t_stack **b, int index);
-int			sort_five(t_stack **a, t_stack **b);
+int			sorted(t_stack **ptr);
+void		sort_2(t_stack **a);
+void		sort_3(t_stack **a);
+void		sort_4(t_stack **a, t_stack **b);
+void		sort_5(t_stack **a, t_stack **b);
 void		sort_beyond(t_stack **a, t_stack **b);
 
 ////////////////////////////////////////////////////////////////

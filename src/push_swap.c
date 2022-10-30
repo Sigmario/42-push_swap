@@ -25,18 +25,17 @@ int	main(int arc, char **arv)
 		get_pos(&stack.a);
 		get_index(&stack.a, size);
 		if (sorted(&stack.a) == TRUE)
-			return (exit(EXIT_FAILURE), 0);
-		if (stacksize(stack.a) == 2)
-			sort_two(&stack.a);
-		else if (stacksize(stack.a) == 3)
-			sort_three(&stack.a);
-		else if (stacksize(stack.a) == 4)
-			sort_four(&stack.a, &stack.b, 1);
-		else if (stacksize(stack.a) == 5)
-			sort_five(&stack.a, &stack.b);
-		else
+			return (exit(EXIT_SUCCESS), 0);
+		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 2)
+			sort_2(&stack.a);
+		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 3)
+			sort_3(&stack.a);
+		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 4)
+			sort_4(&stack.a, &stack.b);
+		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 5)
+			sort_5(&stack.a, &stack.b);
+		if (sorted(&stack.a) == FALSE && stacksize(stack.a) >= 6)
 			sort_beyond(&stack.a, &stack.b);
-		// stackdisplay(stack.a, stack.b);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:13:27 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:48:24 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/10/30 04:04:08 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstcpy(t_list *lst)
 {
-	t_list *current;
+	t_list	*current;
 
 	if (lst == NULL)
 		return (0);
@@ -26,7 +26,7 @@ t_list	*ft_lstcpy(t_list *lst)
 
 t_stack	*stackcopy(t_stack *node)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	if (node == NULL)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:17:14 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/30 04:06:37 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/02 03:52:44 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,28 @@ void	sort_2(t_stack **a)
 
 void	sort_3(t_stack **a)
 {
-	int		first;
-	int		second;
-	int		third;
-
 	if (stacksize(*a) != 3)
 		return ;
-	first = (*a)->value;
-	second = (*a)->next->value;
-	third = (*a)->next->next->value;
-	if (first > second && second < third && third > first)
+	if ((*a)->value > (*a)->next->value
+		&& (*a)->next->value < (*a)->next->next->value
+		&& (*a)->next->next->value > (*a)->value)
 		return (sa(a));
-	if (first < second && second > third && third > first)
+	else if ((*a)->value < (*a)->next->value
+		&& (*a)->next->value > (*a)->next->next->value
+		&& (*a)->next->next->value > (*a)->value)
 		return (sa(a), ra(a));
-	if (first > second && second < third && third < first)
+	else if ((*a)->value > (*a)->next->value
+		&& (*a)->next->value < (*a)->next->next->value
+		&& (*a)->next->next->value < (*a)->value)
 		return (ra(a));
-	if (first < second && second > third && third < first)
+	else if ((*a)->value < (*a)->next->value
+		&& (*a)->next->value > (*a)->next->next->value
+		&& (*a)->next->next->value < (*a)->value)
 		return (rra(a));
-	if (first > second && second > third && third < first)
-		return (sa(a), rra(a));
+	else if ((*a)->value > (*a)->next->value
+		&& (*a)->next->value > (*a)->next->next->value
+		&& (*a)->next->next->value < (*a)->value)
+		return (ra(a), sa(a));
 }
 
 void	sort_4(t_stack **a, t_stack **b)
@@ -66,7 +69,7 @@ void	sort_4(t_stack **a, t_stack **b)
 	if ((*a)->next->index == i)
 		return (sa(a), pb(a, b), finish(a, b));
 	if ((*a)->next->next->index == i)
-		return (ra(a), sa(a), pb(a, b), finish(a, b));
+		return (ra(a), ra(a), pb(a, b), finish(a, b));
 	if ((*a)->next->next->next->index == i)
 		return (rra(a), pb(a, b), finish(a, b));
 }
@@ -78,11 +81,11 @@ void	sort_5(t_stack **a, t_stack **b)
 	if ((*a)->index == 1)
 		return (pb(a, b), sort_4(a, b));
 	if ((*a)->next->index == 1)
-		return (sa(a), pb(a, b), sort_4(a, b));
+		return (ra(a), pb(a, b), sort_4(a, b));
 	if ((*a)->next->next->index == 1)
-		return (ra(a), sa(a), pb(a, b), sort_4(a, b));
+		return (ra(a), ra(a), pb(a, b), sort_4(a, b));
 	if ((*a)->next->next->next->index == 1)
-		return (rra(a), rra(a), pb(a, b), sort_4(a, b));
+		return (rra(a), rra(a), pb(a, b), ra(a), sort_4(a, b));
 	if ((*a)->next->next->next->next->index == 1)
 		return (rra(a), pb(a, b), sort_4(a, b));
 }

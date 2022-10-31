@@ -34,7 +34,7 @@ int	main(int arc, char **arv)
 			sort_4(&stack.a, &stack.b);
 		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 5)
 			sort_5(&stack.a, &stack.b);
-		if (sorted(&stack.a) == FALSE && stacksize(stack.a) >= 6)
+		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) >= 6)
 			sort_beyond(&stack.a, &stack.b);
 	}
 	return (0);

@@ -15,7 +15,9 @@
 
 # include "../libft/libft.h"
 
-# define TBD 11
+# define TOP 16
+# define BOTTOM 32
+# define TBD 64
 
 typedef struct s_stack
 {
@@ -38,6 +40,9 @@ typedef struct s_data
 	int				max_index;
 	int				sec_max_index;
 	int				sa_needed;
+	int				ra_count;
+	int				rra_count;
+	int				count_chunk;
 }	t_data;
 
 ////////////////////////////////////////////////////////////////

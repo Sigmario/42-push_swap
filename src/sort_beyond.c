@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/30 21:04:39 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/02 03:51:16 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,38 @@ static t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 
 static t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 {
-	int	a_start;
-	int	b_start;
+	int	i;
 
-	a_start = 0;
-	b_start = 0;
-	if (data->index >= (data->chunk - data->quarter + 1)
-		&& data->index <= data->chunk)
+	i = 1;
+	while (i < data->pos)
 	{
-		while (++a_start < data->pos)
-			ra(a);
-		while (++b_start < data->pos)
-			rb(b);
-		pb(a, b);
-		while (b_start > 1)
-		{
-			rrb(b);
-			b_start--;
-		}
+		ra(a);
+		i++;
 	}
+	pb(a, b);
+	data->count_chunk++;
 	return (*a);
 }
 
 static void	get_chunks(int times, t_stack **a, t_stack **b)
 {
-	int		i;
-	t_stack	*node;
 	t_data	data;
+	t_stack	*node;
 
-	i = 0;
-	node = *a;
 	data.quarter = stacksize(*a) / times;
 	data.chunk = data.quarter;
+	data.count_chunk = 0;
+	node = *a;
 	while (node)
 	{
 		data.pos = node->pos;
-		data.index = node->index;
-		data.max_index = get_max_index(b);
-		if (i == data.chunk)
+		if (data.count_chunk == data.chunk)
 			data.chunk += data.quarter;
-		else if (node->index >= (data.chunk - data.quarter + 1)
-			&& node->index <= data.chunk)
-		{
+		else if ((node->index >= (data.chunk - data.quarter + 1)
+				&& node->index <= data.chunk) && data.count_chunk != data.chunk)
 			node = sort_to_b(&data, a, b);
-			i++;
-		}
 		else
-			(node) = (node)->next;
+			node = node->next;
 	}
 }
 
@@ -115,14 +100,14 @@ void	sort_beyond(t_stack **a, t_stack **b)
 	t_stack	*node;
 	t_data	data;
 
-	data.sa_needed = TBD;
 	size = stacksize(*a);
+	data.sa_needed = TBD;
 	if (size > 5 && size < 100)
 		get_chunks(2, a, b);
 	else if (size >= 100 && size < 500)
-		get_chunks(7.5, a, b);
+		get_chunks(11, a, b);
 	else if (size >= 500)
-		get_chunks(11.5, a, b);
+		get_chunks(22, a, b);
 	node = *b;
 	while (node)
 	{

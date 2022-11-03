@@ -18,15 +18,15 @@ static int	array_to_list(int *array, int size, t_stack **ptr)
 
 	i = 0;
 	if (ft_nbrcmp(array, size) == TRUE)
-		return (ft_printf("Error\n"), exit(EXIT_SUCCESS), 0);
-	while (i < size - 1)
+		return (ft_printf("Error\n"), free(array),
+			stackclear(ptr), exit(EXIT_FAILURE), 0);
+	while (i < size)
 	{
 		stackadd_back(ptr, stacknew(array[i]));
 		i++;
 	}
-	free(array);
 	if (!(*ptr)->next)
-		return (0);
+		return (free(array), stackclear(ptr), exit(EXIT_FAILURE), 0);
 	return (0);
 }
 
@@ -62,22 +62,22 @@ t_stack	*get_values(int size, char **arv)
 
 	i = 0;
 	node = NULL;
-	array = (int *)malloc((size - 1) * sizeof(int));
-	if (size > 1)
+	array = (int *)malloc((size) * sizeof(int));
+	if (!array)
+		return (ft_printf("Error\n"), free(array), NULL);
+	if (size > 0)
 	{
-		while (i < size - 1)
+		while (i < size)
 		{
 			array[i] = ft_atoi(arv[i + 1]);
 			if (invalid_values(arv[i + 1], array[i]) == TRUE)
-			{
-				ft_printf("Error\n");
-				exit(EXIT_SUCCESS);
-				return (NULL);
-			}
+				return (ft_printf("Error\n"),
+					free(array), exit(EXIT_FAILURE), NULL);
 			i++;
 		}
 		array_to_list(array, size, &node);
 	}
+	free(array);
 	return (node);
 }
 
@@ -92,5 +92,6 @@ int	sorted(t_stack **ptr)
 			return (FALSE);
 		node = node->next;
 	}
+	stackclear(ptr);
 	return (TRUE);
 }

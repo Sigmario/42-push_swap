@@ -86,6 +86,7 @@ void		rrr(t_stack **a, t_stack **b);
 ////////////////////////////////////////////////////////////////////////////////
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
+void		stackclear(t_stack **ptr);
 t_stack		*stackcopy(t_stack *node);
 void		stackdisplay(t_stack *a, t_stack *b);
 t_stack		*stacklast(t_stack *node);

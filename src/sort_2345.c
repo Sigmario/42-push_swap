@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:17:14 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/02 03:52:44 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/03 11:47:55 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ void	sort_3(t_stack **a)
 		&& (*a)->next->value < (*a)->next->next->value
 		&& (*a)->next->next->value > (*a)->value)
 		return (sa(a));
-	else if ((*a)->value < (*a)->next->value
+	if ((*a)->value < (*a)->next->value
 		&& (*a)->next->value > (*a)->next->next->value
 		&& (*a)->next->next->value > (*a)->value)
 		return (sa(a), ra(a));
-	else if ((*a)->value > (*a)->next->value
+	if ((*a)->value > (*a)->next->value
 		&& (*a)->next->value < (*a)->next->next->value
 		&& (*a)->next->next->value < (*a)->value)
 		return (ra(a));
-	else if ((*a)->value < (*a)->next->value
+	if ((*a)->value < (*a)->next->value
 		&& (*a)->next->value > (*a)->next->next->value
 		&& (*a)->next->next->value < (*a)->value)
 		return (rra(a));
-	else if ((*a)->value > (*a)->next->value
+	if ((*a)->value > (*a)->next->value
 		&& (*a)->next->value > (*a)->next->next->value
 		&& (*a)->next->next->value < (*a)->value)
 		return (ra(a), sa(a));

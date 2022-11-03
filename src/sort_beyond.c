@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/02 03:51:16 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/03 11:47:04 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,11 @@ static t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 	int	i;
 
 	i = 1;
-	while (i < pos)
-	{
+	while (i++ < pos)
 		rb(b);
-		i++;
-	}
 	pa(a, b);
-	while (i > 1)
-	{
+	while (--i > 1)
 		rrb(b);
-		i--;
-	}
 	return (*b);
 }
 
@@ -36,11 +30,8 @@ static t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 	int	i;
 
 	i = 1;
-	while (i < data->pos)
-	{
+	while (i++ < data->pos)
 		ra(a);
-		i++;
-	}
 	pb(a, b);
 	data->count_chunk++;
 	return (*a);

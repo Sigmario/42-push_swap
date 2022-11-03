@@ -24,12 +24,13 @@ static int	array_to_list(int *array, int size, t_stack **ptr)
 		stackadd_back(ptr, stacknew(array[i]));
 		i++;
 	}
+	free(array);
 	if (!(*ptr)->next)
 		return (0);
 	return (0);
 }
 
-static int	invalid_number(char *str, int nbr)
+static int	invalid_values(char *str, int nbr)
 {
 	int	i;
 
@@ -67,7 +68,7 @@ t_stack	*get_values(int size, char **arv)
 		while (i < size - 1)
 		{
 			array[i] = ft_atoi(arv[i + 1]);
-			if (invalid_number(arv[i + 1], array[i]) == TRUE)
+			if (invalid_values(arv[i + 1], array[i]) == TRUE)
 			{
 				ft_printf("Error\n");
 				exit(EXIT_SUCCESS);
@@ -92,26 +93,4 @@ int	sorted(t_stack **ptr)
 		node = node->next;
 	}
 	return (TRUE);
-}
-
-int	get_min_value(t_stack **ptr)
-{
-	t_stack	*current;
-	int		min_value;
-	int		min_value_index;
-
-	current = *ptr;
-	min_value_index = INT_MAX;
-	get_pos(ptr);
-	min_value = current->value;
-	while (current)
-	{
-		if (current->index < min_value_index)
-		{
-			min_value_index = current->index;
-			min_value = current->value;
-		}
-		current = current->next;
-	}
-	return (min_value);
 }

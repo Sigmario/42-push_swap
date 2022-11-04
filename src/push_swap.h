@@ -32,6 +32,8 @@ typedef struct s_stack
 typedef struct s_data
 {
 	int				pos;
+	int				top_pos;
+	int				btm_pos;
 	int				size;
 	int				value;
 	int				index;

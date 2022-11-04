@@ -17,6 +17,7 @@ int	main(int arc, char **arv)
 	t_stack	stack;
 	int		size;
 
+	ft_bzero(&stack, sizeof(t_stack));
 	if (arc > 1)
 	{
 		stack.a = get_values(arc - 1, arv);

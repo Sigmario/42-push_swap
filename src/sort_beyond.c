@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/04 01:05:24 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:21:42 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,64 @@ static t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 	return (*b);
 }
 
+static	void	find_bottom(t_data *data, t_stack **a)
+{
+	int top;
+	int bottom;
+	t_stack *node;
+	t_stack *r_node;
+
+	top = 1;
+	bottom = 2;
+	node = stackcopy(*a);
+	get_index(&node, data->size);
+	r_node = stackcopy(*a);
+	stackrev(r_node);
+	get_index(&r_node, data->size);
+	while (node)
+	{
+		if (node->index >= (data->chunk - data->quarter + 1)
+			&& node->index <= data->chunk)
+			break ;
+		top++;
+		node = node->next;
+	}
+	data->top_pos = top;
+	while(r_node)
+	{
+		if (r_node->index >= (data->chunk - data->quarter + 1)
+			&& r_node->index <= data->chunk)
+			break ;
+		bottom++;
+		r_node = r_node->next;
+	}
+	data->btm_pos = bottom;
+}
+
 static t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 {
-	int	i;
+	int top;
+	int bottom;
 
-	i = 1;
-	while (i++ < data->pos)
-		ra(a);
+	find_bottom(data, a);
+	top = data->top_pos;
+	bottom = data->btm_pos;
+	if (top <= bottom)
+	{
+		while (top > 1)
+		{
+			ra(a);
+			top--;
+		}
+	}
+	else if (bottom < top)
+	{
+		while (bottom > 1)
+		{
+			rra(a);
+			bottom--;
+		}
+	}
 	pb(a, b);
 	data->count_chunk++;
 	return (*a);
@@ -49,6 +100,7 @@ static void	get_chunks(t_stack **a, t_stack **b)
 	while (node)
 	{
 		data.pos = node->pos;
+		data.size = stacksize(node);
 		if (data.count_chunk == data.chunk)
 			data.chunk += data.quarter;
 		else if ((node->index >= (data.chunk - data.quarter + 1)
@@ -90,8 +142,6 @@ void	sort_beyond(t_stack **a, t_stack **b)
 	t_stack	*node;
 	t_data	data;
 
-	if (!a)
-		return ;
 	data.sa_needed = TBD;
 	get_chunks(a, b);
 	node = *b;

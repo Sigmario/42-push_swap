@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_push.c                                         :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/04 00:48:53 by julmuntz         ###   ########.fr       */
+/*   Created: 2022/02/21 17:57:22 by julmuntz          #+#    #+#             */
+/*   Updated: 2022/11/04 01:02:22 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static void	push(t_stack **current, t_stack **adjacent)
+int	ft_sqrt(int nbr)
 {
-	t_stack	*first;
+	int	res;
+	int	tmp;
 
-	first = *current;
-	stackpop(current);
-	stackadd_front(adjacent, stacknew(first->value));
-	get_pos(current);
-}
-
-void	pa(t_stack **a, t_stack **b)
-{
-	if (!*b)
-		return ;
-	push(b, a);
-	ft_printf("pa\n");
-}
-
-void	pb(t_stack **a, t_stack **b)
-{
-	if (!*a)
-		return ;
-	push(a, b);
-	ft_printf("pb\n");
+	res = nbr / 2;
+	tmp = 0;
+	while (res != tmp)
+	{
+		tmp = res;
+		res = (nbr / tmp + tmp) / 2;
+	}
+	return (res);
 }

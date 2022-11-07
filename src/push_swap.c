@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+static int	sort(t_stack **a, t_stack **b)
+{
+	if (sorted(a) == TRUE)
+		return (stackclear(a), exit(EXIT_SUCCESS), 0);
+	else if (sorted(a) == FALSE && stacksize(*a) == 2)
+		sort_2(a);
+	else if (sorted(a) == FALSE && stacksize(*a) == 3)
+		sort_3(a);
+	else if (sorted(a) == FALSE && stacksize(*a) == 4)
+		sort_4(a, b);
+	else if (sorted(a) == FALSE && stacksize(*a) == 5)
+		sort_5(a, b);
+	else if (sorted(a) == FALSE && stacksize(*a) >= 6)
+		sort_beyond(a, b);
+	return (0);
+}
+
 int	main(int arc, char **arv)
 {
 	t_stack	stack;
@@ -25,18 +42,7 @@ int	main(int arc, char **arv)
 		size = stacksize(stack.a);
 		get_pos(&stack.a);
 		get_index(&stack.a, size);
-		if (sorted(&stack.a) == TRUE)
-			return (stackclear(&stack.a), exit(EXIT_SUCCESS), 0);
-		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 2)
-			sort_2(&stack.a);
-		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 3)
-			sort_3(&stack.a);
-		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 4)
-			sort_4(&stack.a, &stack.b);
-		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) == 5)
-			sort_5(&stack.a, &stack.b);
-		else if (sorted(&stack.a) == FALSE && stacksize(stack.a) >= 6)
-			sort_beyond(&stack.a, &stack.b);
+		sort(&stack.a, &stack.b);
 		stackclear(&stack.a);
 	}
 	return (0);

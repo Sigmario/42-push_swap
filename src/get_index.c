@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/10/30 19:08:13 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/07 16:02:04 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,32 @@ void	get_index(t_stack **ptr, int size)
 	}
 }
 
-int	get_min_index(t_stack **ptr)
+void	*max1_or_max2(t_stack *node, t_data *data, t_stack **a, t_stack **b)
 {
-	t_stack	*current;
-	int		min_value_pos;
-	int		min_value_index;
-
-	current = *ptr;
-	min_value_index = INT_MAX;
-	get_pos(ptr);
-	min_value_pos = current->index;
-	while (current)
+	if (data->sa_needed == FALSE && data->index == data->max_index)
+		node = sort_to_a(node->pos, a, b);
+	else if (data->sa_needed == TBD && data->index == data->sec_max_index)
 	{
-		if (current->index < min_value_index)
-		{
-			min_value_index = current->index;
-			min_value_pos = current->index;
-		}
-		current = current->next;
+		node = sort_to_a(node->pos, a, b);
+		data->sa_needed = TRUE;
 	}
-	return (min_value_pos);
+	else if (data->sa_needed == TRUE && data->index == data->max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		sa(a);
+		data->sa_needed = FALSE;
+	}
+	else if (data->sa_needed == FALSE && data->index == data->sec_max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		data->sa_needed = TRUE;
+	}
+	else
+		node = (node)->next;
+	return (node);
 }
 
-int	get_max_index(t_stack **ptr)
+int	get_1stmax(t_stack **ptr)
 {
 	t_stack	*current;
 	int		max_value_pos;
@@ -80,7 +83,7 @@ int	get_max_index(t_stack **ptr)
 	return (max_value_pos);
 }
 
-int	get_2ndmax_index(t_stack **ptr)
+int	get_2ndmax(t_stack **ptr)
 {
 	int		size;
 	t_stack	*current;

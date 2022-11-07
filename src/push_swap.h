@@ -42,8 +42,6 @@ typedef struct s_data
 	int				max_index;
 	int				sec_max_index;
 	int				sa_needed;
-	int				ra_count;
-	int				rra_count;
 	int				count_chunk;
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/05 15:33:00 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:52:57 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,62 +35,40 @@ static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 	top = 1;
 	bottom = 1;
 	node = stackcopy(*a);
-	get_index(&node, stacksize(*a));
-	r_node = stackcopy(*a);
-	stackrev(r_node);
-	get_index(&r_node, stacksize(*a));
+	get_index(&node, stacksize(node));
 	while (node)
 	{
-		if (node->index >= 1
-			&& node->index <= data->quarter)
+		if ((node->index >= (data->chunk - data->quarter + 1)
+			&& node->index <= data->chunk))
 			break ;
 		node = node->next;
 		top++;
 	}
-	while(r_node)
+	r_node = stackcopy(*a);
+	stackrev(r_node);
+	get_index(&r_node, stacksize(r_node));
+	while (r_node)
 	{
-		if (r_node->index >= 1
-			&& r_node->index <= data->quarter)
+		if ((r_node->index >= (data->chunk - data->quarter + 1)
+			&& r_node->index <= data->chunk))
 			break ;
 		r_node = r_node->next;
 		bottom++;
 	}
-	if (top == bottom)
+	if (top <= bottom)
 	{
-		bottom *= 2;
-		while (top > 1)
-		{
-			if(top == 1)
-			{
-				while (bottom >= 1)
-				{
-					rra(a);
-					bottom--;
-				}
-				pb(a, b);
-				continue ;
-			}
+		while (top-- > 1)
 			ra(a);
-			top--;
-		}
-		return (*a);
-	}
-	else if (top < bottom)
-	{
-		while (top > 1)
-		{
-			ra(a);
-			top--;
-		}
+		pb(a, b);
+		data->count_chunk++;
 		return (*a);
 	}
 	else if (bottom < top)
 	{
-		while (bottom >= 1)
-		{
+		while (bottom-- > 0)
 			rra(a);
-			bottom--;
-		}
+		pb(a, b);
+		data->count_chunk++;
 		return (*a);
 	}
 	return (0);
@@ -103,21 +81,16 @@ static void	get_chunks(t_stack **a, t_stack **b)
 
 	data.quarter = ft_sqrt(stacksize(*a));
 	data.chunk = data.quarter;
+	data.count_chunk = 0;
 	node = *a;
 	while (node)
 	{
-		data.pos = node->pos;
-		data.size = stacksize(*a);
 		if (data.count_chunk == data.chunk)
 			data.chunk += data.quarter;
-		else if ((node->index >= (data.chunk - data.quarter + 1)
-				&& node->index <= data.chunk))
-		{
+		if ((node->index >= (data.chunk - data.quarter + 1)
+			&& node->index <= data.chunk))
 			node = sort_to_b(&data, a, b);
-			pb(a, b);
-		}
-		else
-			node = node->next;
+		node = node->next;
 	}
 }
 

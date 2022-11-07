@@ -18,6 +18,8 @@
 # define TOP 16
 # define BOTTOM 32
 # define TBD 64
+# define ON 128
+# define OFF 256
 
 typedef struct s_stack
 {
@@ -32,8 +34,6 @@ typedef struct s_stack
 typedef struct s_data
 {
 	int				pos;
-	int				top_pos;
-	int				btm_pos;
 	int				size;
 	int				value;
 	int				index;
@@ -42,7 +42,6 @@ typedef struct s_data
 	int				max_index;
 	int				sec_max_index;
 	int				sa_needed;
-	int				count_chunk;
 }	t_data;
 
 ////////////////////////////////////////////////////////////////

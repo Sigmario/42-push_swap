@@ -17,7 +17,7 @@ static int	array_to_list(int *array, int size, t_stack **ptr)
 	int	i;
 
 	i = 0;
-	if (ft_nbrcmp(array, size) == TRUE)
+	if (ft_nbrcmp(array, size + 1) == TRUE)
 		return (ft_printf("Error\n"), free(array),
 			stackclear(ptr), exit(EXIT_FAILURE), 0);
 	while (i < size)

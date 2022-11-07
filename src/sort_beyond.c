@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/07 01:52:57 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:20:03 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 	t_stack *r_node;
 
 	top = 1;
-	bottom = 1;
+	bottom = 2;
 	node = stackcopy(*a);
 	get_index(&node, stacksize(node));
 	while (node)
 	{
-		if ((node->index >= (data->chunk - data->quarter + 1)
+		if ((node->index >= (data->chunk - data->quarter)
 			&& node->index <= data->chunk))
 			break ;
 		node = node->next;
@@ -49,7 +49,7 @@ static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 	get_index(&r_node, stacksize(r_node));
 	while (r_node)
 	{
-		if ((r_node->index >= (data->chunk - data->quarter + 1)
+		if ((r_node->index >= (data->chunk - data->quarter)
 			&& r_node->index <= data->chunk))
 			break ;
 		r_node = r_node->next;
@@ -60,15 +60,13 @@ static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 		while (top-- > 1)
 			ra(a);
 		pb(a, b);
-		data->count_chunk++;
 		return (*a);
 	}
 	else if (bottom < top)
 	{
-		while (bottom-- > 0)
+		while (bottom-- > 1)
 			rra(a);
 		pb(a, b);
-		data->count_chunk++;
 		return (*a);
 	}
 	return (0);
@@ -79,18 +77,15 @@ static void	get_chunks(t_stack **a, t_stack **b)
 	t_data data;
 	t_stack	*node;
 
-	data.quarter = ft_sqrt(stacksize(*a));
+	data.quarter = ft_sqrt(stacksize(*a)) / 2;
 	data.chunk = data.quarter;
-	data.count_chunk = 0;
 	node = *a;
 	while (node)
 	{
-		if (data.count_chunk == data.chunk)
-			data.chunk += data.quarter;
-		if ((node->index >= (data.chunk - data.quarter + 1)
-			&& node->index <= data.chunk))
+		if (node->index >= (data.chunk - data.quarter))
 			node = sort_to_b(&data, a, b);
-		node = node->next;
+		else
+			node = node->next;
 	}
 }
 

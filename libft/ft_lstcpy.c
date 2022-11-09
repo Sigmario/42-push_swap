@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:13:27 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/09 05:58:38 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:56:46 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_stack	*stackcopy(t_stack *node)
 	{
 		current = (t_stack *)malloc(sizeof(t_stack));
 		current->value = node->value;
-		current->index = node->index;
 		current->next = stackcopy(node->next);
 		return (current);
 	}

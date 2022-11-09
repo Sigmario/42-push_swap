@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/04 00:48:53 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/09 05:57:06 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	push(t_stack **current, t_stack **adjacent)
 {
-	t_stack	*first;
+	int	value;
 
-	first = *current;
+	value = (*current)->value;
 	stackpop(current);
-	stackadd_front(adjacent, stacknew(first->value));
+	stackadd_front(adjacent, stacknew(value));
 	get_pos(current);
 }
 

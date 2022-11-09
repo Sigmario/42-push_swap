@@ -41,9 +41,10 @@ int	main(int arc, char **arv)
 		stack.b = NULL;
 		size = stacksize(stack.a);
 		get_pos(&stack.a);
-		get_index(&stack.a, size);
+		get_index(stack.a, size);
 		sort(&stack.a, &stack.b);
 		stackclear(&stack.a);
+		stackclear(&stack.b);
 	}
 	return (0);
 }

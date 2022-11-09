@@ -44,6 +44,7 @@ typedef struct s_data
 	int				ra_count;
 	int				rra_count;
 	int				sa_needed;
+	int				count_chunk;
 }	t_data;
 
 ////////////////////////////////////////////////////////////////
@@ -51,7 +52,7 @@ typedef struct s_data
 ////////////////////////////////////////////////////////////////////////////////
 t_stack		*get_values(int size, char **arv);
 void		get_pos(t_stack **ptr);
-void		get_index(t_stack **ptr, int size);
+void		get_index(t_stack *node, int size);
 int			get_1stmax(t_stack **ptr);
 int			get_2ndmax(t_stack **ptr);
 
@@ -65,7 +66,7 @@ void		sort_4(t_stack **a, t_stack **b);
 void		sort_5(t_stack **a, t_stack **b);
 void		sort_beyond(t_stack **a, t_stack **b);
 t_stack		*sort_to_a(int pos, t_stack **a, t_stack **b);
-void		*max1_or_max2(t_stack *n, t_data *d, t_stack **a, t_stack **b);
+t_stack		*max1_or_max2(t_stack *n, t_data *d, t_stack **a, t_stack **b);
 
 ////////////////////////////////////////////////////////////////
 /////////////  O P E R A T I O N S  ////////////////////////////////////

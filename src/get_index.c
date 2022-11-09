@@ -6,13 +6,13 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/07 16:02:04 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/09 04:36:46 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_index(t_stack **ptr, int size)
+void	get_index(t_stack *node, int size)
 {
 	t_stack	*end;
 	t_stack	*current;
@@ -21,7 +21,7 @@ void	get_index(t_stack **ptr, int size)
 	end = NULL;
 	while (size > 0)
 	{
-		current = *ptr;
+		current = node;
 		min_value = INT_MIN;
 		while (current)
 		{
@@ -31,7 +31,7 @@ void	get_index(t_stack **ptr, int size)
 			{
 				min_value = current->value;
 				end = current;
-				current = *ptr;
+				current = node;
 			}
 			current = current->next;
 		}
@@ -41,7 +41,7 @@ void	get_index(t_stack **ptr, int size)
 	}
 }
 
-void	*max1_or_max2(t_stack *node, t_data *data, t_stack **a, t_stack **b)
+t_stack	*max1_or_max2(t_stack *node, t_data *data, t_stack **a, t_stack **b)
 {
 	if (data->sa_needed == FALSE && data->index == data->max_index)
 		node = sort_to_a(node->pos, a, b);

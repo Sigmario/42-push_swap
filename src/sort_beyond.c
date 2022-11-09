@@ -6,58 +6,61 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/07 16:01:43 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/09 05:51:48 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ra_or_rra(t_stack *node, t_stack *r_node, t_data *data)
-{
-	data->ra_count = 1;
-	data->rra_count = 2;
-	get_index(&node, stacksize(node));
-	while (node)
-	{
-		if ((node->index >= (data->chunk - data->quarter)
-				&& node->index <= data->chunk))
-			break ;
-		node = node->next;
-		data->ra_count++;
-	}
-	stackrev(r_node);
-	get_index(&r_node, stacksize(r_node));
-	while (r_node)
-	{
-		if ((r_node->index >= (data->chunk - data->quarter)
-				&& r_node->index <= data->chunk))
-			break ;
-		r_node = r_node->next;
-		data->rra_count++;
-	}
-}
 
 t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = 1;
-	while (i++ < pos)
+	while (i < pos)
+	{
 		rb(b);
+		i++;
+	}
 	pa(a, b);
-	while (--i > 1)
+	while (i > 1)
+	{
 		rrb(b);
+		i--;
+	}
 	return (*b);
 }
 
 static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 {
-	t_stack	*node;
-	t_stack	*r_node;
+	t_stack *node;
+	t_stack *copy;
+	t_stack *r_node;
+	t_stack *r_copy;
 
-	node = stackcopy(*a);
-	r_node = stackcopy(*a);
-	ra_or_rra(node, r_node, data);
+	copy = stackcopy(*a);
+	node = copy;
+	data->ra_count = 1;
+	get_index(node, stacksize(node));
+	while (node)
+	{
+		if (node->index <= data->quarter)
+			break ;
+		node = node->next;
+		data->ra_count++;
+	}
+	r_copy = stackcopy(*a);
+	r_node = r_copy;
+	data->rra_count = 2;
+	stackrev(r_node);
+	get_index(r_node, stacksize(r_node));
+	while (r_node)
+	{
+		if (r_node->index <= data->quarter)
+			break ;
+		r_node = r_node->next;
+		data->rra_count++;
+	}
 	if (data->ra_count <= data->rra_count)
 	{
 		while (data->ra_count-- > 1)
@@ -68,25 +71,30 @@ static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
 		while (data->rra_count-- > 1)
 			rra(a);
 	}
+	data->count_chunk++;
 	pb(a, b);
 	return (*a);
 }
 
 static void	get_chunks(t_stack **a, t_stack **b)
 {
-	t_data	data;
 	t_stack	*node;
+	t_data	data;
 
-	data.quarter = ft_sqrt(stacksize(*a)) / 2;
-	data.chunk = data.quarter;
+	data.quarter = ft_sqrt(stacksize(*a) / 2);
+	data.chunk = data.chunk;
 	node = *a;
+	data.count_chunk = 0;
 	while (node)
 	{
-		if (node->index >= (data.chunk - data.quarter))
+		if (data.count_chunk == data.chunk)
+			data.chunk += data.quarter;
+		if (node->index <= data.chunk)
 			node = sort_to_b(&data, a, b);
 		else
 			node = node->next;
 	}
+	stackclear(a);
 }
 
 void	sort_beyond(t_stack **a, t_stack **b)

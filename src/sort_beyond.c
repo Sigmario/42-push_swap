@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/09 18:20:18 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:39:09 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,12 @@ t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 	return (*b);
 }
 
-static	t_stack	*sort_to_b(t_data *data, t_stack **a, t_stack **b)
+static	t_stack	*sort_to_b(int pos, t_data *data, t_stack **a, t_stack **b)
 {
-	t_stack	*node;
-
-	node = stackcopy(*a);
-	data->ra_count = 1;
-	get_index(node, stacksize(node));
-	while (node)
-	{
-		if (node->index <= data->chunk)
-			break ;
-		node = node->next;
-		data->ra_count++;
-	}
-	while (data->ra_count-- > 1)
+	while (pos-- > 1)
 		ra(a);
-	data->count_chunk++;
 	pb(a, b);
+	data->count_chunk++;
 	return (*a);
 }
 
@@ -57,13 +45,19 @@ static void	get_chunks(t_stack **a, t_stack **b)
 	t_stack	*node;
 	t_data	data;
 
-	data.chunk = ft_sqrt(stacksize(*a)) / 2;
+	data.chunk = ft_sqrt(stacksize(*a) / 2);
 	data.quarter = data.chunk;
 	node = *a;
+	data.count_chunk = 1;
 	while (node)
 	{
-		if (node->index)
-			node = sort_to_b(&data, a, b);
+		if (data.count_chunk == data.chunk)
+			data.chunk += data.quarter;
+		else if (node->index <= data.chunk + 1)
+		{
+			node = sort_to_b(node->pos, &data, a, b);
+			get_index(node, stacksize(node));
+		}
 		else
 			node = node->next;
 	}

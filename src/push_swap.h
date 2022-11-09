@@ -18,8 +18,6 @@
 # define TOP 16
 # define BOTTOM 32
 # define TBD 64
-# define ON 128
-# define OFF 256
 
 typedef struct s_stack
 {
@@ -89,13 +87,11 @@ void		rrr(t_stack **a, t_stack **b);
 void		stackadd_back(t_stack **ptr, t_stack *new);
 void		stackadd_front(t_stack **ptr, t_stack *new);
 void		stackclear(t_stack **ptr);
-t_stack		*stackcopy(t_stack *node);
 void		stackdisplay(t_stack *a, t_stack *b);
 t_stack		*stacklast(t_stack *node);
 t_stack		*stacknew(int value);
 int			stackpop(t_stack **ptr);
 void		stackpop_last(t_stack **ptr);
-void		stackrev(t_stack *node);
 int			stacksize(t_stack *node);
 
 #endif

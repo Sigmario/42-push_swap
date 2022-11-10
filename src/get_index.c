@@ -6,13 +6,13 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/09 18:09:23 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:21:19 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_index(t_stack *node, int size)
+void	get_index(t_stack **ptr, int size)
 {
 	t_stack	*end;
 	t_stack	*current;
@@ -21,17 +21,17 @@ void	get_index(t_stack *node, int size)
 	end = NULL;
 	while (size > 0)
 	{
-		current = node;
+		current = *ptr;
 		min_value = INT_MIN;
 		while (current)
 		{
 			if (current->value == INT_MIN && current->index == 0)
 				current->index = 1;
-			if (current->value > min_value && current->index == 0)
+			else if (current->value > min_value && current->index == 0)
 			{
 				min_value = current->value;
 				end = current;
-				current = node;
+				current = *ptr;
 			}
 			current = current->next;
 		}
@@ -39,31 +39,6 @@ void	get_index(t_stack *node, int size)
 			end->index = size;
 		size--;
 	}
-}
-
-t_stack	*max1_or_max2(t_stack *node, t_data *data, t_stack **a, t_stack **b)
-{
-	if (data->sa_needed == FALSE && data->index == data->max_index)
-		node = sort_to_a(node->pos, a, b);
-	else if (data->sa_needed == TBD && data->index == data->sec_max_index)
-	{
-		node = sort_to_a(node->pos, a, b);
-		data->sa_needed = TRUE;
-	}
-	else if (data->sa_needed == TRUE && data->index == data->max_index)
-	{
-		node = sort_to_a(node->pos, a, b);
-		sa(a);
-		data->sa_needed = FALSE;
-	}
-	else if (data->sa_needed == FALSE && data->index == data->sec_max_index)
-	{
-		node = sort_to_a(node->pos, a, b);
-		data->sa_needed = TRUE;
-	}
-	else
-		node = (node)->next;
-	return (node);
 }
 
 int	get_1stmax(t_stack **ptr)
@@ -99,12 +74,12 @@ int	get_2ndmax(t_stack **ptr)
 	current = *ptr;
 	while (current)
 	{
-		if (current->index > max_value_pos)
+		if (current->index >= max_value_pos)
 		{
 			second_max_value_pos = max_value_pos;
 			max_value_pos = current->index;
 		}
-		else if (current->index > second_max_value_pos
+		else if (current->index >= second_max_value_pos
 			&& current->index != max_value_pos)
 			second_max_value_pos = current->index;
 		current = current->next;

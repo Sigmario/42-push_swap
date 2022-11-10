@@ -6,28 +6,22 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:33:28 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/09 20:39:09 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:21:52 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
+static t_stack	*sort_to_a(int pos, t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = 1;
-	while (i < pos)
-	{
+	while (i++ < pos)
 		rb(b);
-		i++;
-	}
 	pa(a, b);
-	while (i > 1)
-	{
+	while (--i > 1)
 		rrb(b);
-		i--;
-	}
 	return (*b);
 }
 
@@ -54,14 +48,37 @@ static void	get_chunks(t_stack **a, t_stack **b)
 		if (data.count_chunk == data.chunk)
 			data.chunk += data.quarter;
 		else if (node->index <= data.chunk + 1)
-		{
 			node = sort_to_b(node->pos, &data, a, b);
-			get_index(node, stacksize(node));
-		}
 		else
 			node = node->next;
 	}
 	stackclear(a);
+}
+
+static t_stack	*max1_or_max2(t_stack *node, t_data *data, t_stack **a,	\
+															t_stack **b)
+{
+	if (data->sa_needed == FALSE && data->index == data->max_index)
+		node = sort_to_a(node->pos, a, b);
+	else if (data->sa_needed == TBD && data->index == data->sec_max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		data->sa_needed = TRUE;
+	}
+	else if (data->sa_needed == TRUE && data->index == data->max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		sa(a);
+		data->sa_needed = FALSE;
+	}
+	else if (data->sa_needed == FALSE && data->index == data->sec_max_index)
+	{
+		node = sort_to_a(node->pos, a, b);
+		data->sa_needed = TRUE;
+	}
+	else
+		node = (node)->next;
+	return (node);
 }
 
 void	sort_beyond(t_stack **a, t_stack **b)

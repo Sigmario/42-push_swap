@@ -34,14 +34,14 @@ int	main(int arc, char **arv)
 	t_stack	stack;
 	int		size;
 
-	ft_bzero(&stack, sizeof(t_stack));
 	if (arc > 1)
 	{
+		ft_bzero(&stack, sizeof(t_stack));
 		stack.a = get_values(arc - 1, arv);
 		stack.b = NULL;
 		size = stacksize(stack.a);
 		get_pos(&stack.a);
-		get_index(stack.a, size);
+		get_index(&stack.a, size);
 		sort(&stack.a, &stack.b);
 		stackclear(&stack.a);
 		stackclear(&stack.b);

@@ -18,7 +18,7 @@ static int	array_to_list(int *array, int size, t_stack **ptr)
 
 	i = 0;
 	if (ft_nbrcmp(array, size + 1) == TRUE)
-		return (ft_printf("Error\n"), free(array),
+		return (ft_putstr_fd("Error\n", STDERR_FILENO), free(array),
 			stackclear(ptr), exit(EXIT_FAILURE), 0);
 	while (i < size)
 	{
@@ -64,14 +64,14 @@ t_stack	*get_values(int size, char **arv)
 	node = NULL;
 	array = (int *)malloc((size) * sizeof(int));
 	if (!array)
-		return (ft_printf("Error\n"), free(array), NULL);
+		return (ft_putstr_fd("Error\n", STDERR_FILENO), free(array), NULL);
 	if (size > 0)
 	{
 		while (i < size)
 		{
 			array[i] = ft_atoi(arv[i + 1]);
 			if (invalid_values(arv[i + 1], array[i]) == TRUE)
-				return (ft_printf("Error\n"),
+				return (ft_putstr_fd("Error\n", STDERR_FILENO),
 					free(array), exit(EXIT_FAILURE), NULL);
 			i++;
 		}

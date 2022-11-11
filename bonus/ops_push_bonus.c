@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:59:36 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/10 18:28:43 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:31:15 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	pa(t_stack **a, t_stack **b)
 	if (!*b)
 		return ;
 	push(b, a);
-	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -35,5 +34,4 @@ void	pb(t_stack **a, t_stack **b)
 	if (!*a)
 		return ;
 	push(a, b);
-	ft_printf("pb\n");
 }

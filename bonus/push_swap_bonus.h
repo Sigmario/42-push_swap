@@ -6,8 +6,13 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:27:47 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/10 18:28:58 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:13:14 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
+
+# include "../src/push_swap.h"
+
+#endif

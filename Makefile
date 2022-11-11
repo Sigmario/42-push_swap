@@ -29,8 +29,6 @@ B_SRC		=	push_swap_bonus.c		\
 				ops_push_bonus.c		\
 				ops_rotate_bonus.c		\
 				ops_r_rotate_bonus.c	\
-				sort_2345_bonus.c		\
-				sort_beyond_bonus.c		\
 
 OBJDIR		= 	obj/
 OBJ			= 	$(addprefix $(OBJDIR), $(SRC:.c=.o))

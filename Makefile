@@ -14,6 +14,7 @@ SRCDIR		= 	src/
 SRC			=	push_swap.c		\
 				get_values.c	\
 				get_index.c		\
+				get_choice.c	\
 				ops_swap.c		\
 				ops_push.c		\
 				ops_rotate.c	\

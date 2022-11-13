@@ -15,10 +15,6 @@
 
 # include "../libft/libft.h"
 
-# define TOP 16
-# define BOTTOM 32
-# define TBD 64
-
 typedef struct s_stack
 {
 	struct s_stack	*a;
@@ -37,11 +33,9 @@ typedef struct s_data
 	int				index;
 	int				chunk;
 	int				quarter;
-	int				max_index;
-	int				sec_max_index;
-	int				ra_count;
-	int				rra_count;
-	int				sa_needed;
+	int				max_pos;
+	int				r_needed;
+	int				rr_needed;
 	int				count_chunk;
 }	t_data;
 
@@ -49,10 +43,9 @@ typedef struct s_data
 /////////////  D  A  T  A  /////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 t_stack		*get_values(int size, char **arv);
-void		get_pos(t_stack **ptr);
 void		get_index(t_stack **ptr, int size);
-int			get_1stmax(t_stack **ptr);
-int			get_2ndmax(t_stack **ptr);
+int			get_max_index(t_stack **ptr);
+void		get_pos(t_stack **ptr);
 
 ////////////////////////////////////////////////////////////////
 /////////////  S O R T I N G  //////////////////////////////////////////
@@ -62,6 +55,8 @@ void		sort_2(t_stack **a);
 void		sort_3(t_stack **a);
 void		sort_4(t_stack **a, t_stack **b);
 void		sort_5(t_stack **a, t_stack **b);
+int			ra_or_rra(t_data *data, t_stack **a);
+int			rb_or_rrb(t_data *data, t_stack **b);
 void		sort_beyond(t_stack **a, t_stack **b);
 
 ////////////////////////////////////////////////////////////////

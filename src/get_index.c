@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:25:57 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/10 15:21:19 by julmuntz         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:41:26 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_index(t_stack **ptr, int size)
 	}
 }
 
-int	get_1stmax(t_stack **ptr)
+int	get_max_index(t_stack **ptr)
 {
 	t_stack	*current;
 	int		max_value_pos;
@@ -56,35 +56,6 @@ int	get_1stmax(t_stack **ptr)
 		current = current->next;
 	}
 	return (max_value_pos);
-}
-
-int	get_2ndmax(t_stack **ptr)
-{
-	int		size;
-	t_stack	*current;
-	int		max_value_pos;
-	int		second_max_value_pos;
-
-	get_pos(ptr);
-	size = stacksize(*ptr);
-	if (size < 2)
-		return (0);
-	max_value_pos = INT_MIN;
-	second_max_value_pos = INT_MIN;
-	current = *ptr;
-	while (current)
-	{
-		if (current->index >= max_value_pos)
-		{
-			second_max_value_pos = max_value_pos;
-			max_value_pos = current->index;
-		}
-		else if (current->index >= second_max_value_pos
-			&& current->index != max_value_pos)
-			second_max_value_pos = current->index;
-		current = current->next;
-	}
-	return (second_max_value_pos);
 }
 
 void	get_pos(t_stack **ptr)

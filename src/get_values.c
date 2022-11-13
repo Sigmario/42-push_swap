@@ -84,13 +84,15 @@ t_stack	*get_values(int size, char **arv)
 int	sorted(t_stack **ptr)
 {
 	t_stack	*node;
+	t_stack	*tmp;
 
 	node = *ptr;
-	while (node)
+	while (node->next)
 	{
-		if (node->pos != node->index)
+		tmp = node->next;
+		if (node->value > tmp->value)
 			return (FALSE);
-		node = node->next;
+		node = tmp;
 	}
 	stackclear(ptr);
 	return (TRUE);

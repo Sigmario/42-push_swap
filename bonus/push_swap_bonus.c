@@ -79,7 +79,7 @@ int	main(int arc, char **arv)
 			return (ft_putstr_fd("OK\n", STDOUT_FILENO), 0);
 		if (get_input(&stack.a, &stack.b) == TRUE)
 		{
-			if (sorted(&stack.a) == TRUE)
+			if (sorted(&stack.a) == TRUE && !stack.b)
 				return (ft_putstr_fd("OK\n", STDOUT_FILENO), \
 									stackclear(&stack.a), 0);
 			else

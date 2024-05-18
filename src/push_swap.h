@@ -31,12 +31,14 @@ typedef struct s_data
 	int				size;
 	int				value;
 	int				index;
-	int				chunk;
+	int				c1;
+	int				c2;
 	int				quarter;
 	int				max_pos;
 	int				r_needed;
 	int				rr_needed;
-	int				count_chunk;
+	int				count_chunk1;
+	int				count_chunk2;
 }	t_data;
 
 ////////////////////////////////////////////////////////////////
@@ -56,6 +58,7 @@ void		sort_3(t_stack **a);
 void		sort_4(t_stack **a, t_stack **b);
 void		sort_5(t_stack **a, t_stack **b);
 int			ra_or_rra(t_data *data, t_stack **a);
+int			ra_or_rra2(t_data *data, t_stack **a);
 int			rb_or_rrb(t_data *data, t_stack **b);
 void		sort_beyond(t_stack **a, t_stack **b);
 

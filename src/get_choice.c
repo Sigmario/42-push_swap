@@ -6,7 +6,7 @@
 /*   By: julmuntz <julmuntz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:22:15 by julmuntz          #+#    #+#             */
-/*   Updated: 2022/11/13 15:22:15 by julmuntz         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:27:39 by julmuntz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,45 @@ int	ra_or_rra(t_data *data, t_stack **a)
 {
 	int		top;
 	int		bottom;
-	t_stack	*top_node;
-	t_stack	*bottom_node;
+	t_stack	*node;
 
-	top_node = *a;
-	while (top_node)
+	top = -1;
+	bottom = -1;
+	node = *a;
+	while (node)
 	{
-		if (top_node->index <= data->chunk)
+		if (node->index <= data->c1
+			&& node->index > data->c1 - data->quarter)
 		{
-			top = top_node->pos;
-			break ;
+			if (top == -1)
+				top = node->pos;
+			bottom = node->pos;
 		}
-		top_node = top_node->next;
+		node = node->next;
 	}
-	bottom_node = *a;
-	while (bottom_node)
+	bottom = (data->size - bottom) + 1;
+	return (closest(data, top, bottom));
+}
+
+int	ra_or_rra2(t_data *data, t_stack **a)
+{
+	int		top;
+	int		bottom;
+	t_stack	*node;
+
+	top = -1;
+	bottom = -1;
+	node = *a;
+	while (node)
 	{
-		if (bottom_node->index <= data->chunk)
-			bottom = bottom_node->pos;
-		bottom_node = bottom_node->next;
+		if (node->index <= data->c2
+			&& node->index > data->c2 - data->quarter)
+		{
+			if (top == -1)
+				top = node->pos;
+			bottom = node->pos;
+		}
+		node = node->next;
 	}
 	bottom = (data->size - bottom) + 1;
 	return (closest(data, top, bottom));
